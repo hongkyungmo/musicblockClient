@@ -1,0 +1,138 @@
+<html>
+
+<head>
+    <!-- jQuery CDN -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+    <style>
+        .noteVisualContainer {
+            position: relative;
+            float:left;
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            border: solid;
+            border-width: 1px;
+        }
+        
+        .noteVisualBar {
+            position: absolute;
+            float: left;
+            width: 10%;
+            height: 0%;
+            bottom: 0%;
+            background-color: #6865d4;
+        }
+        
+        .noteVisualOne {
+            left:0%;
+            background-color: black;
+        }
+        
+        .noteVisualTwo {
+            left:10%;
+            background-color: black;
+        }
+        
+        .noteVisualThree {
+            left:20%;
+            background-color: black;
+        }
+        
+        .noteVisualFour {
+            left:30%;
+            background-color: black;
+        }
+        
+        .noteVisualFive {
+            left:40%;
+            background-color: black;
+        }
+        
+        .noteVisualSix {
+            left:50%;
+            background-color: black;
+        }
+        
+        .noteVisualSeven {
+            left:60%;
+            background-color: black;
+        }
+        
+        .noteVisualEight {
+            left:70%;
+            background-color: black;
+        }
+        
+        .noteVisualNine {
+            left:80%;
+            background-color: black;
+        }
+        
+        .noteVisualTen {
+            left:90%;
+            background-color: black;
+        }
+    </style>
+
+    <script>
+        $(function () {
+            var barCycleLength = 400;
+            var timerIdForPlayingArr = new Array();
+
+            $(".noteVisualContainer").click(function () {
+                var nThVisualContainer = $(".noteVisualContainer").index(this);
+
+                if (timerIdForPlayingArr[nThVisualContainer] == undefined) {
+                    timerIdForPlayingArr[nThVisualContainer] = setInterval(function () {
+                        var i = 0;
+
+                        for (var i = 0; i < 10; i++) {
+                            var rand = Math.floor((Math.random() * 100) + 1);
+                            $(".noteVisualContainer:eq(" + nThVisualContainer + ")").children(":eq(" + i + ")").animate({
+                                height: rand + "%"
+                            }, barCycleLength, function () {
+                                //매 주기마다 하고 싶은 것이 있으면 이곳에 기술하면 됨
+                            });
+                        }
+                    }, barCycleLength);
+                }else{
+                    clearInterval(timerIdForPlayingArr[nThVisualContainer]);
+                    timerIdForPlayingArr[nThVisualContainer] = undefined;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="noteVisualContainer">
+        <div class="noteVisualBar noteVisualOne">
+        </div>
+        <div class="noteVisualBar noteVisualTwo">
+        </div>
+        <div class="noteVisualBar noteVisualThree">
+        </div>
+        <div class="noteVisualBar noteVisualFour">
+        </div>
+        <div class="noteVisualBar noteVisualFive">
+        </div>
+        <div class="noteVisualBar noteVisualSix">
+        </div>
+        <div class="noteVisualBar noteVisualSeven">
+        </div>
+        <div class="noteVisualBar noteVisualEight">
+        </div>
+        <div class="noteVisualBar noteVisualNine">
+        </div>
+        <div class="noteVisualBar noteVisualTen">
+        </div>
+    </div>
+    
+    
+    
+</body>
+
+</html>

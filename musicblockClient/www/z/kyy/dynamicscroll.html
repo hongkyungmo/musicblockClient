@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+      <script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+  	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+ 
+    
+    <style>
+        .reverse
+        {
+            background:Black;
+            color:White;
+        }
+    </style>
+
+    <script type="text/javascript">
+    var foodlist = [];
+    foodlist.push({분류:'1류', 명칭:'고철3', 가격:3000});
+    foodlist.push({분류:'1류', 명칭:'고철23', 가격:3500});
+    foodlist.push({분류:'1류', 명칭:'고철1', 가격:3500});
+
+            
+    for(var key in foodlist)
+    {
+        var data1 = foodlist[key].명칭 + "\t" + foodlist[key].가격 + "\n";
+    }
+
+    function fill_div()
+    {
+        document.getElementById("testArea").innerHTML="<input type='button' />";
+    }
+
+    // 페이지를 로드할때 수행합니다. onLoad 처럼.
+    $(document).ready(function () {
+        // <h3> 태그의 색상을 blue로 찾아서 변경해줍니다.
+        $('h3').css('color', 'blue');
+
+        // class 를 추가합니다. 속성을 추가할 수 있습니다.
+        $('h3').addClass('item');
+
+        // class 를 추가합니다. 속성을 추가할 수 있습니다. (콜백함수)
+        $('h3').addClass(function (index) {
+            return 'class' + index;
+        });
+
+        //h1 태그의 스타일을 배열에 있는 색상으로 지정합니다.
+        var color = ['Red', 'Green', 'Purple'];
+        $('h1').css('color', function (index) {
+            return color[index];
+        });
+
+        //h1 태그의 스타일을 배열에 있는 색상으로 지정합니다. (배경색을 지정합니다)
+        var color = ['Red', 'Green', 'Purple'];
+        $('h1').css({
+            color: function (index) {
+                return color[index];
+            }, backgroundColor: 'Black'
+        });
+
+        //<h1> 태그에 문자열 추가하기 (내용추가)
+        $('h1').html(function (index, html) {
+            return '★' + html + '☆';
+        });
+
+        //동적으로 body에 객체생성하기
+        $('<h1>동적으로 삽입</h1>').appendTo('body');
+
+        // 이벤트 연결하기
+        //h1 태그중 h1click 라는 id를 클릭하면 문자에 +를 붕ㅌ여 준다.
+        $('h1#h1click').bind('click', function () {
+            $(this).html(function (index, html) {
+                return html + '+';
+            });
+        });
+        // 마우스 올렸을 경우 이벤트
+        // 마우스를 올리면 Style를 추가해준다.
+        // bind 이벤트는 한번에 여러 종류의 이벤트를 연결하거나 간단한 이벤트를 연결할 수 없을 때 사용.
+        $('h1#h1style').bind({
+            mouseenter: function () { $(this).addClass('reverse') },
+            mouseleave: function () { $(this).removeClass('reverse'); }
+        });
+
+        //이벤트 연결하기 hover
+        $('h1#h1style2').hover(function () {
+            $(this).addClass('reverse');
+        }, function () {
+            $(this).removeClass('reverse');
+        });
+
+
+
+
+
+        // 그림태그의 속성을 정의 합니다. (사이즈 변경처리)
+        $('img.image1').attr({
+            width: function (index) {
+                return (index + 1) * 100;
+            }, height: 100
+        });
+
+
+        // 함수실행 2초마다 첫번째 이미지를 마지막으로 보낸다
+        setInterval(function () {
+            $('img.image2').first().appendTo($('div#imagelist')); //imagelist 이름의 id의 위치에 image2이름인 class의 이미지를 붙여 넣는다.
+        }, 2000);
+
+
+        // 타이머를 이용하여 현재 시간을 출력합니다.
+        var clock = document.getElementById('clock');
+        setInterval(function () {
+            var now = new Date();
+            clock.innerHTML = now.toString();
+        }, 1000);
+
+        // 콤보를 수정할 경우 5초 타이머 이후 출력합니다.
+        // select > option 은 select 의 부모를 이야기함.
+        //        setTimeout(function(){
+        //            var value = $('select > option:selected').val();
+        //            alert(value);
+        //            }, 5000);
+
+        //textare의 글짜 갯수를 출력한다.
+        $('textarea').keyup(function () {
+            var inputLength = $(this).val().length;
+            var remain = 150 - inputLength;
+
+            $('h2#rtext').html(remain);
+        });
+
+        // 자동으로 늘어다는 스크롤
+        // 스크롤 이벤트시 발생
+        $(window).scroll(function () {
+            var scrollHeight = $(window).scrollTop() + $(window).height();
+            var documentHeight = $(document).height();
+
+            if (scrollHeight + 200 >= documentHeight) {
+                for (var i = 0; i < 10; i++) {
+                    //스크롤이 내려가면 pagebottom 하단에 문자열을 추가한다. 
+                    //(예: Mixsh.com 하단에 데이타 가져오는 부분처럼)
+                    $('<h1>Infinity Scroll</h1>').appendTo('H2#pagebottom'); 
+                }
+            }
+        });
+
+
+    });
+
+
+
+    </script>
+
+
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+        <h1>sdfsdafsdfsda</h1>
+        <h1 id="h1click">h1 click event add : bind()</h1>
+        <h1>sdfsdafsdfsda</h1>
+        <h1 id="h1style">mouse enter style!</h1>
+        <h1 id="h1style2">mouse hover event style!</h1>
+        <input type="button" value="click!" onclick="fill_div();" />   
+        <div id="clock"></div>
+
+        <select>
+            <option>Apple</option>
+            <option>Cat</option>
+            <option>Dog</option>
+        </select>
+
+        <img src='1-1.jpg' class ="image1" />
+        <img src='1-1.jpg' class ="image1" />
+        <img src='1-1.jpg' class ="image1" />
+        <br />
+        <br />
+        <div id="imagelist">
+            <img src='images/1.jpg' class ="image2" />
+            <img src='images/2.jpg' class ="image2" />
+            <img src='images/3.jpg' class ="image2" />
+            <img src='images/4.jpg' class ="image2" />
+            <img src='images/5.jpg' class ="image2" />
+        </div>
+
+        <div></div>
+        <div></div>
+        <div></div>
+        <br />
+        <div>
+            <textarea cols="70" rows="5"></textarea>
+        </div>
+        <h2 id="rtext">150</h1>
+
+        <h2 id="pagebottom"></h2>
+
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<div class='people'>
+    <li><a href=#><img src='images/3.png' />
+        </a><h2>"+data['block'].title+"</h2> 
+            <span class='info'>
+                <nm>이산돌</nm> 
+                    <em></em>
+                        <div class='comments'></div>
+            </span>
+        
+        <ul class='toolbar'>
+            <ui>
+                <p class='likes'>
+                    <span class='glyphicon glyphicon-heart'></span>
+                    <span class='nLikes'></span>
+                </p>
+            </ui>
+            <ui>
+                <p class='download'><span class='glyphicon glyphicon-download-alt'></span>
+                    <span class='nDown'></span>
+                </p>
+            </ui>
+            <ui>
+                <p class='player'><span class='glyphicon glyphicon-play'></span>
+                <span class='glyphicon glyphicon-pause'></span>
+                <span class='nPlayers'></span>
+                </p>
+            </ui>
+            <ui>
+                <p class='stop'><span class='glyphicon glyphicon-stop'></span>
+                </p>
+            </ui>
+        </ul>
+    </li>
+</div>";
+
+
+
+
+
+
+

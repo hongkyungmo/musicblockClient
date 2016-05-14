@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Music Block</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- tag script -->
+<script src="https://code.jquery.com/jquery-1.7.js"></script>
+
+<!-- jQuery CDN -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+<!-- bootstrap script -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<!-- Common Module -->
+<link rel="stylesheet" type="text/css" href="css/common/commonMenu.css">
+<link rel="stylesheet" type="text/css" href="css/emotion/emotion.css">
+
+
+</head>
+
+<body>
+	<!--공통모듈 : 메뉴바-->
+	<script src="javascript/common/commonMenu.js"></script>
+	<div id="background">
+		<form name="detailForm" >
+		<div id="emotion-container">
+			<center>
+				<img class="icon" id="icon_1" src="images/emotion/sweet.png" style="width: 15%; height: 20%" /> 
+				<img class="icon" id="icon_2" src="images/emotion/angry.png" style="width: 15%; height: 20%" /> 
+				<img class="icon" id="icon_3" src="images/emotion/sad.png" style="width: 15%; height: 20%" /> 
+				<img class="icon" id="icon_4" src="images/emotion/happy.png" style="width: 15%; height: 20%" /> 
+				<img class="icon" id="icon_5" src="images/emotion/wow.png" style="width: 15%; height: 20%" />
+			</center>
+		</div>
+
+		<div class="whiteSpace"></div>
+
+		<div class="form-inline">
+		<center>
+			<div class='form-group'>			
+				<input id="title" type="text" class="form-control" placeholder='제목쓰던지말던지 니맘대로'> 
+				<input id="hash" type="text" class="form-control" placeholder="태그쓰던지말던지 구분은#으로">
+			</div>
+			</center>
+			<div id="save-container">
+				<input type="checkbox" id="check" value="g2"> Upload to ShareBox 
+				<a id="save">Save</a>
+			</div>
+		</div>
+		</form> 
+	</div>
+	
+	<!-- indexedDB 관련 js -->
+	<script src="javascript/common/initializeIndexedDB.js"></script>
+	<script src="javascript/emotion/indexedDBForMusicEmotion.js"></script>
+	
+</body>
+</html>

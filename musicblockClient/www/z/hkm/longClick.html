@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+
+	<!-- jQuery CDN -->
+	<script src="https://code.jquery.com/jquery-2.2.2.js"></script>
+	<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	
+	<!-- touchpunch -->
+	<script src="/javascript/jquery.ui.touch-punch.js"></script>
+	
+	
+	
+	<style>
+		#test {
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
+	</style>
+	
+	
+	
+	<script>
+		var longClick = {touchFlag:false, setTimeoutId:null, top:null, left:null};
+		
+		$(function () {
+			$("#test").draggable();
+			
+			$("#test").mousedown(function () {
+				//클릭시 제어를 위한 변수 셋팅
+				//touchFlag : 클릭을 유지하고 있는지를 판단하는 변수
+				longClick.touchFlag = true;
+				//top, left : 클릭을 시작한 위치를 저장하는 변수
+				//			  (추후 setTimeout 발동 시점의 x,y좌표와 비교하여 드래그 여부를 판별)
+				longClick.top = $("#test").offset().top;
+				longClick.left = $("#test").offset().left;
+
+				
+				longClick.setTimeoutId = setTimeout(function () {
+					if(longClick.touchFlag == true && longClick.top == $("#test").offset().top && longClick.left == $("#test").offset().left){
+						alert("롱 클릭!");
+					}
+				}, 500);
+			});
+			$("#test").mouseup(function () {
+				touchFlag = false;
+				clearTimeout(longClick.setTimeoutId);
+			});
+		});
+	</script>
+	
+</head>
+
+<body>
+	<div id="test">
+	</div>
+</body>
+
+</html>
