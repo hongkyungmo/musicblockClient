@@ -1,0 +1,155 @@
+/* User Define */
+
+
+/*
+#back {
+    float: left;
+    position: relative;
+    margin: 1%;
+    text-align: center;
+    -webkit-border-radius: 5px;
+}
+
+#menu {
+    float: right;
+    position: relative;
+    margin: 1%;
+    -webkit-border-radius: 5px;
+    text-align: center;
+}
+*/
+
+@import url('font-awesome.min.css');
+
+html, body {
+    height: 100%;
+   /* overflow: hidden;*/
+}
+
+#COMMON-MENUBAR {
+	position:relative; 
+    background-color: #46B8FF;
+    width: 100%;
+    height: 12%;
+    z-index : 100;
+}
+
+.menu-on {
+    left: 60%;
+}
+
+.menu-off {
+    left: 100%;
+}
+
+.fa-plus-circle{
+    position: absolute;
+    top:10%;
+    right: 10%;;
+    color: white;
+}
+
+div .fa-2x{
+    font-size: 1.5em;
+    color : white
+}
+
+div .fa-1x{
+    font-size: 0.3em;
+    color : white
+}
+
+.fa-1x:hovor{
+	color:white;
+    background-color: black;
+}
+
+
+/* Overriding BootStrapk */
+
+/* Overriding .btn */
+.COMMON-MENUBAR-BTN,
+.COMPOSE-MENUBAR-BTN
+{
+    /* overflow: hidden; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 0 0;
+    border: 0px;
+}
+
+.btn:hover
+{
+    color:white;
+    background-color: #46B8FF;
+}
+
+/* Overriding .row */
+.COMMON-MENUBAR-ROW {
+	/* overflow: hidden */
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+}
+
+/* Overriding .col-xs-1 */
+.COMMON-MENUBAR-GRID-1 {
+	/* overflow: hidden */
+    padding: 0.5%;
+    height: 100%;
+}
+
+
+/* Overriding .col-xs-10 */
+.COMMON-MENUBAR-GRID-10 {
+    height: 100%;
+}
+
+.glyphicon {
+    position: relative;
+    content: " ";
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+
+/* 은혜가 추가한 것                             각페이지 메뉴page*/
+
+#menuPage {
+	position: absolute;
+	clear:both;
+	z-index: 150;
+	background-color: white;
+	display: none;
+	left: 0;
+	top: 0;
+	overflow-y: hidden;
+}
+
+#MENU-MENUBAR {
+	position:fixed; 
+    background-color: #46B8FF;
+    width: 100%;
+    height: 43.19px;
+}
+
+#btnContainer{
+	top:43.19px;
+	 position:fixed;
+}
+
+.customButton{
+	height:33%;width:33%;
+/* 	margin-left:5%;
+	margin-right:5%; */
+}
+

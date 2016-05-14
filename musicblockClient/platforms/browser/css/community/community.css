@@ -1,0 +1,301 @@
+html,
+
+        body {
+            position: relative;
+            height: 100%;
+            background-color: lightgray;
+            /* overflow-x: hidden;  */ /*이거의경우 웹에서 swipper적용x  */
+        }
+
+
+	 /* 	.btn-search {
+			background-color: transparent;
+			width: 100%;
+			 heigth : 100%;
+			padding: 2.5%; 
+			left: 89.7%;
+			top: 1%;
+		}  */
+		
+		#btn-search span:before {
+		    border-right: 15px solid #ddd;
+				} 
+				
+		#btn-search  span:after {
+		    border-right: 15px solid #ddd;
+		    border-left: 0;
+		}
+		
+        
+ /*       #menu-search {
+            float: right;
+            right: 10%;
+            position: relative;
+            margin: 1%;
+            text-align: center;
+            z-index: 100;
+            -webkit-border-radius: 5px;
+        }
+        
+        #menu-container {
+            padding: 1px;
+            width: 100%;
+            height: 12%;
+            background-color: deepskyblue;
+            position: relative;
+            z-index: 100;
+        }  */
+        
+        #COMMON-MENUBAR {
+			position:fixed; 
+			 z-index : 100;
+        }
+        
+        .music-menu {
+            /*padding: 1px;*/
+            background-color: white;
+            position: fixed;
+            margin-top: 6.5%;
+            height:10%;
+            z-index: 100;
+        }
+        .header{
+            width: 100%;
+            height: 22%;
+            background-color:white;
+            position: relative;
+            z-index: 0;
+        }   
+    
+        .total-container {
+            background-color: lightgrey;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+           /*  height: 300px; */
+            /*margin: 20px auto;*/
+        }
+        
+        .contain-layer {
+            background-color: lightgrey;
+            position: relative;
+            z-index: 10;
+            /*padding: 5px;*/
+        }
+        
+
+        .people {
+            position: relative;
+            margin-top : 1%;
+            /*상단 마진*/
+            margin-bottom: -7%; /*컨텐츠간의 간격*/
+            /*people클래스간 마진*/
+            padding: 6%; /*가운데를중심으로 화면비율*/
+            width: 100%;
+           /*  height: 180px; */
+            font-family: "Helvetica Neue", Helvetica, sans-serif, Bold;
+            font-size: 10px;
+            /*아이뒤 업로드*/
+            line-height: 12px; /*글자간격*/
+            color: #3b3b3b;
+            -webkit-font-smoothing: antialiased;
+            list-style-type: none;
+        }
+        
+        .people li {
+            position: relative;
+            margin: 0 0 0 0;
+            padding: 10px 8px 8px 14px; /*타이틀부분만*/
+            width: 100%;
+            /*height: 80%;*/
+            border: 2px solid #bbbbbb;
+            border-radius: 4px; /*사각형둥굴기*/
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), inset 0 1px 0 #ffffff;
+            background: #f6f6f6;
+        }
+
+        .people li img {
+            position: absolute;
+            top: -12px;
+            left: -16px;
+            z-index: 10;
+            margin: 0;
+            padding: 4px;
+            width: 50px;
+            height: 50px;
+            border: 2px solid #bbbbbb;
+            box-shadow: 0 1px 0 #ffffff;
+            border-radius: 80%;
+            background: #ffffff;
+        }
+        /*노래제목*/
+        
+        .people li h2 {
+            position: relative;
+            margin: 0;
+            padding: 1px 1px 3px 24px; /*타이틀부분만*/
+            font-size: 15px;
+            line-height: 82%;
+            /*제목마진부분*/
+            font-weight: bold;
+            color: #4b4b4b;
+            /*text-shadow: -1px -1px 0 rgba(255, 255, 255, 0.7);*/
+        }
+        
+        .comments{
+            position: relative;
+            margin-top: -10px;
+                
+        }
+       
+       people li .info {
+            margin: 0;
+             display: block;
+         
+        }
+        
+        /*닉네임*/
+        .people li nm {
+            /*position: absolute;*/
+            position: relative;
+            padding: 0px 0px 3px 24px;
+            font-size: 10px;
+            font-weight: 400;
+            font-style: normal;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            color: #5b5b5b;
+            float: left;
+        }
+        
+        /*날짜*/
+        .people li em {
+           /* position: absolute;*/
+            /*padding: 10px 10px 13px 164px;*/
+            padding: 0px 0px 3px 24px;
+            font-size: 10px;
+            font-weight: 400;
+            font-style: italic;
+            letter-spacing: 0px;
+            text-transform: uppercase;
+            color: lightgray;
+           float:right;   
+        }
+        
+        /*수평선*/
+        .people li hr {
+            position: relative;
+            /*position: absolute;*/  
+            border: 1px solid ;
+            width:100%; 
+            color: lightgray;  
+            /*text-align:center; */
+           /*margin: 100 auto; */
+            /*display:block*/
+        }
+
+ 
+
+/*--------------------------------------------------------------
+1.0 - TOOLBAR
+--------------------------------------------------------------*/
+
+.toolbar {
+    position:relative;
+    padding: 6px;
+    left: -1px;
+    width: 101%;
+    /*top:80%;*/
+    /*height:10px;*/
+   /* vertical-align: middle;*/
+}
+.toolbar ui {
+	float:left;
+    list-style: none;
+    /*height:60%;*/
+	width: 25%;
+    text-align: center;
+    /*vertical-align: middle;*/
+}
+
+/*--------------------------------------------------------------
+1.0 - TOOLBAR-menu-likes
+--------------------------------------------------------------*/
+    /*@import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome);
+	 fontawesome 
+	[class*="fontawesome-"]:before {
+	  font-family: 'FontAwesome', sans-serif;
+	}
+
+    * {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }*/
+
+    p {
+        font-size: 3px;
+        font-weight: 700;
+        font-family: sans-serif;
+        color: #666a6d;
+        margin: 0px 0;	
+    }
+
+	p:last-child {
+		font-size: 11px;
+		font-weight: normal;
+	}
+
+
+    .likes {
+                -webkit-transition: color .2s ease-out;
+                -moz-transition: color .2s ease-out;
+                -o-transition: color .2s ease-out;
+                -ms-transition: color .2s ease-out;
+                transition: color .2s ease-out;
+            }
+
+	.likes:hover {
+			 color: #e8604a;
+		  	cursor: pointer;
+	  	}
+
+    .download {
+                -webkit-transition: color .2s ease-out;
+                -moz-transition: color .2s ease-out;
+                -o-transition: color .2s ease-out;
+                -ms-transition: color .2s ease-out;
+                transition: color .2s ease-out;
+            }
+
+	.download:hover {
+			 color: mediumseagreen;
+		  	cursor: pointer;
+	  	}
+
+    .stop {
+                -webkit-transition: color .2s ease-out;
+                -moz-transition: color .2s ease-out;
+                -o-transition: color .2s ease-out;
+                -ms-transition: color .2s ease-out;
+                transition: color .2s ease-out;
+            }
+
+	.stop:hover {
+			 color: orange;
+		  	cursor: pointer;
+	  	}
+
+    .player {
+                -webkit-transition: color .2s ease-out;
+                -moz-transition: color .2s ease-out;
+                -o-transition: color .2s ease-out;
+                -ms-transition: color .2s ease-out;
+                transition: color .2s ease-out;
+            }
+
+	.player:hover {
+        color: darkviolet;
+		  	cursor: pointer;
+	  	}
+
