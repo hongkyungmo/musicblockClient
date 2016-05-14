@@ -23,6 +23,13 @@
 	<link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
 	<!-- bootstrap 테마 -->
 	<link rel="stylesheet" href="js/bootstrap/css/bootstrap-theme.css">
+	
+	<script>
+		document.addEventListener("deviceready", onDeviceReady, false);
+		function onDeviceReady() {
+		    alert(cordova.file);
+		}
+	</script>
 </head>
 
 <body>
