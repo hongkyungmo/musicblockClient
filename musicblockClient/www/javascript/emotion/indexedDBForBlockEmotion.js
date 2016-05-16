@@ -118,7 +118,7 @@ function getAllBlocks(){
 //Save to Server&Local
 function sendServer(){
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
-		url : 'https://192.168.0.58:8080/block/blockSave',
+		url : 'block/blockSave',
 		type : 'POST', //Request하는 방식.
 		data : JSON.stringify({ //JSON.stringify를 해줘야 제대로 된 형태의 JSON이 날아감
 			emotion : block.emotion,

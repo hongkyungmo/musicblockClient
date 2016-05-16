@@ -1,0 +1,29 @@
+/* 볼륨 조절 스타일*/
+#vol-container {
+	position: absolute;
+	width: 180px;
+	height: 20px;
+    top:30%;
+	left: 60%;
+	background-color: transparent;
+}
+
+#triangleBar {
+	top: 5px;
+	height: 10px;
+	left: 10px;
+	position: absolute;
+	border-top: 10px solid transparent;
+	border-right: 160px solid white;
+	border-bottom: 0px solid transparent;
+	outline: 1px solid transparent;
+}
+
+#vol-draggable {
+	width: 20px;
+	top: -10%;
+	height: 120%;
+	background-color: red;
+	border-radius: 3px;
+	opacity: 0.8;
+}

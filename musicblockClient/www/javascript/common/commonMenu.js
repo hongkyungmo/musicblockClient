@@ -7,9 +7,9 @@
 var path = $(location).attr('pathname');
 var localUser=localStorage.getItem('user');
 
-var login=	"<button type='button' id='login' class='btn btn-primary' data-toggle='modal' " +
+var login=	"<button type='button' id='login' class='menuButton btn btn-primary' data-toggle='modal' " +
 "data-target='#loginModal'>Login</button>";
-var logout= "<button type='button' id='logout' class='btn btn-primary' >Logout</button>";
+var logout= "<button type='button' id='logout' class='menuButton btn btn-primary' >Logout</button>";
 
 var element = 
 	"<div class='row COMMON-MENUBAR-ROW' id='COMMON-MENUBAR'><div class='col-xs-1 COMMON-MENUBAR-GRID-1'>";
@@ -54,12 +54,12 @@ if(localUser==null){
 
 element+= 
 
-	"<br><button type='button' class='btn btn-primary'>BlockList</button>"
-	+"<button type='button' class='btn btn-primary'>MusicList</button>"
-	+"<button type='button' class='btn btn-primary'>Community</button>"
-	+"<br><button type='button' class='btn btn-primary'>사용설명서</button>"
-	+"<button type='button' class='btn btn-primary'>설정</button>"
-	+"<button type='button' class='btn btn-primary'>기타</button><div>"
+	"<br><button type='button' class='menuButton btn btn-primary'>BlockList</button>"
+	+"<button type='button' class='menuButton btn btn-primary'>MusicList</button>"
+	+"<button type='button' class='menuButton btn btn-primary'>Community</button>"
+	+"<br><button type='button' class='menuButton btn btn-primary'>사용설명서</button>"
+	+"<button type='button' class='menuButton btn btn-primary'>설정</button>"
+	+"<button type='button' class='menuButton btn btn-primary'>기타</button><div>"
 
 	+"<div class='modal fade' id='loginModal' tabindex='-1' role='dialog' aria-labelledby='loginLabel' aria-hidden='true'>"
 	+"	<div class='modal-dialog'>	<div class='modal-content'> <div class='modal-header'>"
@@ -212,6 +212,7 @@ function serverLogin(transUser,transPass,transRemember) {
 /*      자동로그인 관련 jQuery      */
 
 function removeUser(){
+	alert("removeUser!!");
 	console.log('removeUser');
 	if(localUser!=null){
 		localStorage.clear('user');
