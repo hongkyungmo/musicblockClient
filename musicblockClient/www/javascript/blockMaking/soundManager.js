@@ -39,7 +39,7 @@ var playNote = function (noteVal) {
 	//음 연주
 	/*audio.src = 'notes/'+noteVal+'.mp3';*/
 	//임시 테스트 코드 'file:///sdcard/musicblock/notes/1.mp3';
-	audio.src = 'file:///sdcard/musicblock/notes/'+noteVal+'.mp3';
+	audio.src = 'notes/'+noteVal+'.mp3';
 	audio.controls = true;
 	audio.autoplay = true;
 	gain.gain.value = 2;
