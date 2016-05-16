@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<html>
+
+<head>
+
+    <title>Music Block</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Zoom 방지-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- JQuery Load Start -->
+    <!-- <script src="https://code.jquery.com/jquery-1.10.2.js"></script> -->
+    <script src="js/jquery/dist/jquery.js"></script>
+    <script src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
+    <!-- JQuery Load End -->
+
+    <!--  JQuery Mobile using ajax load Start  -->
+    <!--
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+-->
+    <script>
+        $(document).bind('mobileinit', function () {
+            $.mobile.changePage.defaults.changeHash = false;
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false; // 위 두줄은 필요없고, 이 코드만 있으면 된다고 하는 내용도 있네요.
+        });
+    </script>
+    <!--    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+    <!--  JQuery Mobile using ajax load End  -->
+
+
+    <!--  BootStrap Load Start  -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script> -->
+    <script src="js/bootstrap/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="js/bootstrap/css/bootstrap-theme.css">
+    <!--  BootStrap Load End  -- >
+
+    <!-- External css load Start   -->
+
+    <!-- Swiper -->
+    <link rel="stylesheet" tyoe="text/css" href="css/composeMusic/swiper.min.css">
+
+    <!-- Block   -->
+    <link rel="stylesheet" type="text/css" href="css/composeMusic/sortable.css">
+
+
+    <!-- User Defined & Overriding   -->
+    <link rel="stylesheet" type="text/css" href="css/composeMusic/composeMusic.css">
+    <link rel="stylesheet" type="text/css" href="css/composeMusic/indexedDBForComposeMusic.css">
+
+    <!-- Tab -->
+    <link rel="stylesheet" type="text/css" href="css/composeMusic/tab.css">
+
+
+    <!-- Common Module -->
+    <link rel="stylesheet" type="text/css" href="css/common/commonMenu.css">
+    <!-- External css load End   -->
+
+</head>
+
+<body>
+    
+    <!-- 다이얼로그 -->
+    <div id="block-dialog" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="gridModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="title">Block title</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="container-fluid bd-example-row">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <i class='fa fa-pencil-square-o fa-3x' aria-hidden="true" id='dialog-edit'></i>&nbsp;수정
+                            </div>
+                            <div class="col-xs-6">
+                                <i class='fa fa-trash-o fa-3x' aria-hidden="true" id='dialog-delete'></i>&nbsp;삭제
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <!-- 공통 모듈 -->
+    <script src="javascript/common/commonMenu.js"></script>
+
+    <!-- 전체 영역  -->
+    <div class="main-content">
+
+        <!-- 레이어 작업공간 -->
+        <div class="workspace">
+
+            <!-- 레이어 선택자 -->
+            <div class="layer-selector">
+
+                <!-- 멜로디 블럭 레이어 -->
+                <div class='layer-melody-block'>
+                    
+                    <!-- 블럭 리스트 -->
+                    <ol class='swiper-wrapper simple_with_drop vertical' id='work-layer'>
+
+                    <!-- 프로그레스  -->
+                    <div id='progress-bar'></div>
+
+                        <!-- no-drop : 어디서 드랍이 왔는지 확인 하기 위한 selector
+                                             swiper-slide, highlight : 스타일을 지정하기 위한 selector
+                                             layer-block : drag handler
+                                        -->
+                         <!-- <li class='swiper-slide highlight' data-name="Item 1" data-id="1">Item 1</li> -->
+
+                        <!-- 블럭 리스트 끝 -->
+                    </ol>
+                    <!-- 스크롤 바 -->
+                    <div class="swiper-scrollbar"></div>
+
+                    <!-- 멜로디 블럭 레이어 끝 -->
+                </div>
+
+                <!-- 레이어 선택자 끝 -->
+            </div>
+
+            <!-- 레이어 작업공간 끝 -->
+        </div>
+
+        <!-- 저장소 프레임 -->
+        <div class="block-repository">
+
+            <div class="tab_container">
+
+                <input id="tab1" type="radio" name="tabs" checked>
+                <label for="tab1"><i class="fa fa-user"> My Blocks</i></label>
+
+                <input id="tab2" type="radio" name="tabs">
+                <label for="tab2"><i class="fa fa-download"> Downloaded Blocks</i></label>
+
+                <!-- <input id="tab3" type="radio" name="tabs">
+                <label for="tab3"><i class="fa fa-gear"> Option</i></label> -->
+
+
+                <section id="content1" class="tab-content">
+
+                    <!-- 스와이퍼 컨테이너-->
+                    <div class="swiper-container">
+
+                        <!-- 스와이퍼 래퍼-->
+                        <div class="swiper-wrapper">
+
+                            <!-- 스와이퍼 슬라이드-->
+                            <div class="swiper-slide">
+
+                                <!-- 블럭 저장소-->
+                                <div class='span4'>
+
+                                    <!-- 블럭 리스트-->
+                                    <ol class='simple_with_no_drop vertical' id='my-blocks'>
+                                        <!-- no-drop : 어디서 드랍이 왔는지 확인 하기 위한 selector
+                                             swiper-slide, highlight : 스타일을 지정하기 위한 selector
+                                             layer-block : drag handler
+                                        -->
+
+                                        <!-- <li class='no_drop swiper-slide highlight' data-name="Item 6" data-id="6">Item 6</li>
+                                        <li class='no_drop swiper-slide highlight' data-name="Item 7" data-id="7">Item 7</li>
+                                        <li class='no_drop swiper-slide highlight' data-name="Item 8" data-id="8">Item 8</li>
+                                        <li class='no_drop swiper-slide highlight' data-name="Item 9" data-id="9">Item 9</li>
+                                        <li class='no_drop swiper-slide highlight' data-name="Item 0" data-id="0">Item 0</li> -->
+
+                                        <!-- 블럭 리스트 끝-->
+                                    </ol>
+
+                                    <!-- 스크롤 바-->
+                                    <div class="swiper-scrollbar"></div>
+                                    <!-- 블럭 저장소 끝-->
+                                </div>
+
+                                <!-- 스와이퍼 슬라이드 끝-->
+                            </div>
+
+
+
+                            <!-- 스와이퍼 래퍼 끝-->
+                        </div>
+
+
+
+                        <!-- 스와이퍼 컨테이    너 끝-->
+                    </div>
+
+                </section>
+
+                <section id="content2" class="tab-content">
+                    <!-- 스와이퍼 컨테이너-->
+                    <div class="swiper-container">
+
+                        <!-- 스와이퍼 래퍼-->
+                        <div class="swiper-wrapper">
+
+                            <!-- 스와이퍼 슬라이드-->
+                            <div class="swiper-slide">
+
+                                <!-- 블럭 저장소-->
+                                <div class='span4'>
+
+                                    <!-- 블럭 리스트-->
+                                    <ol class='simple_with_no_drop vertical' id='download-blocks'>
+                                        <!-- no-drop : 어디서 드랍이 왔는지 확인 하기 위한 selector
+                                             swiper-slide, highlight : 스타일을 지정하기 위한 selector
+                                             layer-block : drag handler
+                                        -->
+
+                                        <!-- 블럭 리스트 끝-->
+                                    </ol>
+
+                                    <!-- 스크롤 바-->
+                                    <div class="swiper-scrollbar"></div>
+                                    <!-- 블럭 저장소 끝-->
+                                </div>
+
+                                <!-- 스와이퍼 슬라이드 끝-->
+                            </div>
+
+                            <!--                            스와이퍼 래퍼 끝-->
+                        </div>
+
+
+
+                        <!--                   스와이퍼 컨테이    너 끝-->
+                    </div>
+                </section>
+
+               <!--  <section id="content3" class="tab-content">
+                    <p>c</p>
+                </section> -->
+
+            </div>
+
+            <!-- 저장소 프레임 끝-->
+        </div>
+
+        <!-- 전체 영역 끝 -->
+    </div>
+    <!--<div class="menu-off" id="menu-list"><font color="white">메뉴1<br>메뉴2<br>메뉴3<br>메뉴4<br></font></div>-->
+
+    <!-- Sortable JS   -->
+    <script src='javascript/composeMusic/sortable.js'></script>
+    
+    <!-- Touch-punch -->
+    <script src="javascript/composeMusic/jquery.ui.touch-punch.min.js"></script>
+
+    <!-- longpress JS 배제중   -->
+    <script src="javascript/composeMusic/jquery.longpress.js"></script>
+
+    <!-- circle progress JS 보류  -->
+    <script src="javascript/composeMusic/circle-progress.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="javascript/composeMusic/swiper.min.js"></script>
+
+    <!-- Bootstrap-dialog JS 배제중-->
+    <script type="text/javascript" src="javascript/composeMusic/bootstrap-dialog.js"></script>
+
+    <!-- User Defined & Overriding   -->
+    <script src="javascript/composeMusic/composeMusic.js"></script>
+    <script src="javascript/common/initializeIndexedDB.js"></script>
+    <script src="javascript/composeMusic/indexedDBForComposeMusic.js"></script>
+    <script src="javascript/composeMusic/playSound.js"></script>
+</body>
+
+</html>
