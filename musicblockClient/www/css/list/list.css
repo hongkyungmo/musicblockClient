@@ -1,0 +1,182 @@
+html,
+body {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+#background {
+    background-color: #E1F6FA;
+	/*background: linear-gradient( to top, #4499ff, #4444cc );*/
+    width: auto;
+    height: 88%;
+}
+
+#new-music {
+    display: block;
+    position: relative;
+    font-size: 18px;
+    left: 35%;
+    top: 10%;
+    width: 30%;
+    height: 50px;
+    padding-top: 18px;
+}
+
+#musics {
+    position: relative;
+    top: 20%;
+}
+
+.ui.blue.button {
+	display: block;
+    height: 130px;
+    width: 70%;
+	/*background-color:#222222;*/
+	/*background: linear-gradient( to top, #4C6, #492 );*/
+	/*background: linear-gradient( to top, #55dd66, #4499ff );*/
+	background: linear-gradient( to top, #4444cc, #4499ff );
+	/*background: linear-gradient( to top, #ff5573, #c744cc );*/
+	/*background: linear-gradient( to top, #7733ff, #4499ff );*/
+	/*background: linear-gradient( to top, #114466, #4499ff );*/
+	color: #fff;
+    text-shadow: none;
+}
+
+.music-name {
+    position: relative;
+    top: 20px;
+}
+
+.noteVisualContainer {
+    position: relative;
+    float: left;
+    top:8px;
+    left: 0%;
+    width: 100%;
+    height: 90px;
+    background-color: black;
+	/*background: linear-gradient( to top, #3322cd, #33ccff );*/
+    border: solid;
+    border-width: 1px;
+    border-color:white; 
+    z-index:1000000000;
+}
+
+.stopContainer{
+	position: relative;
+    float: left;
+    left: 0%;
+    width: 100%;
+    height: 90px;
+    background-color: black;
+	/*background: linear-gradient( to top, #3322cd, #33ccff );*/
+    border: solid;
+    border-width: 1px;
+    border-color:white; 
+    z-index:1000000001;
+	opacity:0;
+}
+
+.noteVisualBar {
+    position: absolute;
+    float: left;
+    width: 4%;
+    height: 0%;
+    bottom: 0%;
+    border-top-left-radius:50px;
+    border-top-right-radius:50px;
+}
+
+.noteVisualOne {
+    left: 3.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualTwo {
+    left: 13.5%;
+	background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualThree {
+    left: 23.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualFour {
+    left: 33.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualFive {
+    left: 43.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualSix {
+    left: 53.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualSeven {
+    left: 63.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualEight {
+    left: 73.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualNine {
+    left: 83.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.noteVisualTen {
+    left: 93.5%;
+    background: linear-gradient( to top, yellow, green );
+}
+
+.swiper-container {
+	width: 100%;
+	height: 50%;
+	background-color:transparent;
+	margin-top:10%;
+}
+
+.swiper-wrapper{
+	background-color:transparent;
+}
+
+.ui.button{
+	margin:0px;
+}
+
+.swiper-slide {
+	text-align: center;
+	font-size: 18px;
+	background: transparent;
+	/* Center slide text vertically */
+	display: -webkit-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	-webkit-justify-content: center;
+	justify-content: center;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	-webkit-align-items: center;
+	align-items: center;
+}
+
+#playing{
+	position:absolute;
+	top:25px;
+	left:33%;
+	color: #11da66;
+}
+
+/* 
+https://color.adobe.com/ko/explore/most-popular/?time=all */

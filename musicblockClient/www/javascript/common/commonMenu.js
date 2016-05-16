@@ -105,6 +105,26 @@ $(function() {
 
 });
 
+$(function() {
+
+	$(".menuButton").bind("click", function() {
+		var buttonIndex=$(".menuButton").index(this);
+		console.log(buttonIndex);
+		switch(buttonIndex){
+		case 1:
+			$(location).attr('href', "listBlock.html");
+			break;
+		case 2:
+			$(location).attr('href', "listMusic.html");
+			break;
+		case 3:
+			$(location).attr('href', "community.html");
+			break;
+		}
+	});
+
+});
+
 
 /* menuPage 띄우기 위한 function */
 
@@ -239,5 +259,9 @@ $(function() {
 	});
 });
 
-
+function closeIt(){
+	if(event.clientY<0){
+		event.returnValue="창을 닫겠는가?";
+	}
+}
 window.onbeforeunload.removeUser;
