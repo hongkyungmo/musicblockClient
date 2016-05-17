@@ -3,8 +3,10 @@ var block = {title:'', sec:0, notes:'', emotion:[], hash:'', ucode:''}
 $(function(){
 	// 쿼리스트링의 담겨있는 블럭의 시간과 멜로디에 정보를 먼저 담아둔다.
 	var queryString=(location.href.substr(location.href.lastIndexOf('=') + 1)).split("?");
+	console.log(queryString);
 	block.sec = queryString[0];
 	block.notes = queryString[1];
+	console.log(block.notes);
 	
 	// indexedDB의 연결을 확인한다.
 	request.onsuccess = function(event){
@@ -38,7 +40,9 @@ $(function(){
 	);
 	
 	$('#save').on('mouseup', function(){
+		alert("ghghghg");
 		if(block.emotion.length==0){
+			alert('감정을 선택해주세요')
 			// 감정을 선택하라는 modal 띄우기
 			return;
 		}else{
@@ -83,11 +87,19 @@ $.fn.clickToggle = function(func1, func2) {
 // 블럭 추가 함수
 function addBlock(block){
 	var objectStore = db.transaction(["blockTable"], "readwrite").objectStore("blockTable");
+	console.log(block.notes);
+	console.log(block.notes.length);
+	console.log(block.notes==0);
+	console.log(block.notes<0);
+	console.log(block.notes>0);
+
+
 	// 블럭의 음이 없으면 잘못된 경로에 온 것이므로 오류 처리하도록 한다.
 	if(block.notes.length==0){
 		// 잘못된 접근이라고 modal로 표시하세요 
 		console.log('잘못된 접근입니다.'); 
-	}else{
+	}else if(block.notes.length<0){
+		console.log(block);
 		request = objectStore.add({title:block.title, notes:block.notes, sec:block.sec, emotion:block.emotion, hash:block.hash});
 	}
 	request.onsuccess = function(event){
@@ -117,8 +129,9 @@ function getAllBlocks(){
 
 //Save to Server&Local
 function sendServer(){
+	var URL = 'http://192.168.0.58:8080/block/blockSave';
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
-		url : 'http://192.168.0.58:8080/block/blockSave',
+		url : URL,
 		type : 'POST', //Request하는 방식.
 		data : JSON.stringify({ //JSON.stringify를 해줘야 제대로 된 형태의 JSON이 날아감
 			emotion : block.emotion,
@@ -159,8 +172,8 @@ function sendServer(){
 //								location.href = "composeMusic.html";
 //							});
 		},
-		error : function(status) {
-			console.log(status);
+		error : function(request,status,error){
+	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		}
 	});
 }
