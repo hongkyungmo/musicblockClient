@@ -321,8 +321,11 @@ label {
     background: #f0f0f0;
 }
 
-
 .clickLabel{
 	box-shadow: 0 3px #0CE;
 	background: #fff;
+}
+
+.tabs{
+	display:none;
 }

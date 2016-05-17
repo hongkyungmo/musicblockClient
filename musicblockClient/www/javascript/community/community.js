@@ -29,22 +29,46 @@ $(function() {
 	});
 });
 
+$(function() {
+	$("#menu").bind("click", function() {
+		$(".music-menu.header.total-container").hide();
+	});
+	
+	$("#exit").bind("click", function() {
+		$(".music-menu.header.total-container").show();
+	});
+});
+
 $(function(){
 	var leftTab= $("label").eq(1);
 	var rightTab=$("label").eq(2);
-	
-	leftTab.bind("click",function(){
-		console.log("tab1 click");
-		$(this).addClass("clickLabel");
+
+	if($(".tabs:eq(0)")){
+		$(leftTab).addClass("clickLabel");
 		leftTab.find(".fa").css("font-weight","700");
 		leftTab.find(".fa").css("color","#0CE");
 		rightTab.removeClass("clickLabel");
 		$("#musicSection").hide();
 		$("#blockSection").show();
+	}else{
+		$(rightTab).addClass("clickLabel");
+		rightTab.find(".fa").css("font-weight","700");
+		rightTab.find(".fa").css("color","#0CE");
+		leftTab.removeClass("clickLabel");
+		$("#blockSection").hide();
+		$("#musicSection").show();
+	}	
+	
+	leftTab.bind("click",function(){
+		$(this).addClass("clickLabel");
+		leftTab.find(".fa").css("font-weight","700");
+		leftTab.find(".fa").css("color","#0CE");
+		rightTab.removeClass("clickLabel");
+		$("#blockSection").hide();
+		$("#musicSection").show();
 	});
 	
 	rightTab.bind("click",function(){
-		console.log("tab2 click");
 		$(this).addClass("clickLabel");
 		rightTab.find(".fa").css("font-weight","700");
 		rightTab.find(".fa").css("color","#0CE");
@@ -52,9 +76,7 @@ $(function(){
 		$("#blockSection").hide();
 		$("#musicSection").show();
 	});
-	
 });
-
 
 ////////////////////////////////////////////////////////////////////////////////////
 
