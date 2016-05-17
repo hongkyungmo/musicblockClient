@@ -27,14 +27,22 @@
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
+
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="css/community/sortable.css">
+
+<!-- community CSS-->
+<link rel="stylesheet" href="css/community/community.css">
 
 <!-- 공통모듈 : 메뉴바 -->
 <link rel="stylesheet" href="css/common/commonMenu.css">
 
-<!-- community CSS-->
-<link rel="stylesheet" href="css/community/community.css">
+
 
 <!-- <style>
 .modal {
@@ -75,6 +83,42 @@ $(function() {
 	$("#exit").bind("click", function() {
 		$(".music-menu.header.total-container").show();
 	});
+});
+
+$(function() {
+	$("#menu").bind("click", function() {
+		$(".music-menu.header.total-container").hide();
+	});
+	
+	$("#exit").bind("click", function() {
+		$(".music-menu.header.total-container").show();
+	});
+});
+
+$(function(){
+	var leftTab= $("label").eq(1);
+	var rightTab=$("label").eq(2);
+	
+	leftTab.bind("click",function(){
+		console.log("tab1 click");
+		$(this).addClass("clickLabel");
+		leftTab.find(".fa").css("font-weight","700");
+		leftTab.find(".fa").css("color","#0CE");
+		rightTab.removeClass("clickLabel");
+		$("#musicSection").hide();
+		$("#blockSection").show();
+	});
+	
+	rightTab.bind("click",function(){
+		console.log("tab2 click");
+		$(this).addClass("clickLabel");
+		rightTab.find(".fa").css("font-weight","700");
+		rightTab.find(".fa").css("color","#0CE");
+		leftTab.removeClass("clickLabel");
+		$("#blockSection").hide();
+		$("#musicSection").show();
+	});
+	
 });
 
 </script>
@@ -124,231 +168,26 @@ $(function() {
 
 	<!--  <span class="glyphicon glyphicon-search" style = "z-index: 150" ></span>  -->
 	
-	<div class="music-menu" style="width: 100%; height: 10%;">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="dropdown"><a
-				class="dropdown-toggle" data-toggle="dropdown" href="#"
-				role="button" aria-expanded="false"> MUSIC <span class="caret"></span>
-			</a>
-				<ul class="dropdown-menu" role="menu">BLOCK
-				</ul>
-			<li role="presentation"><a href="#">인기순위</a></li>
-			<li role="presentation"><a href="#">최신노래</a></li>
-			<li role="presentation"><a href="#">테마</a></li>
-			<li role="presentation"><a href="#">주간핫</a></li>
-			<li role="presentation"><a href="#">장르</a></li>
-			<li role="presentation"><a href="#">추천</a></li>
-		</ul>
-	</div>
+	<div id="background" style="height: 88%">
 
-	<!-- 헤드부분  -->
-	<div class="header"></div>
+		<input type="radio" class="tabs" style="display: none;" checked>
+		<label for="tab1"><i class="fa fa-user"> Blocks</i></label> <input
+			type="radio" class="tabs" style="display: none;"> <label
+			for="tab2"><i class="fa fa-download">Musics</i></label>
 
-	<!-- 전체 컨테이너 -->
-	<div class="total-container">
-		<div id="contain-layer-left" style="width: 50%; float: left;">
-	<!-- 		 <div class="people">
-				<li><a href=#><img src="images/3.png" /></a>
-					<h2>이게더길어</h2> <span class="info"><nm>이산돌</nm> <em></em>
-						<hr>
-						<div class="comments"></div> </span>
-					<ul class="toolbar">
-						<ui>
-						<p class="likes">
-							<span class="glyphicon glyphicon-heart"></span> <span
-								class="nLikes"></span>
-						</p>
-						</ui>
-
-						<ui>
-						<p class="download">
-							<span class="glyphicon glyphicon-download-alt"></span> <span
-								class="nDown"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="player">
-							<span class="glyphicon glyphicon-play"></span> <span
-								class="glyphicon glyphicon-pause"></span> <span class="nPlayers"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="stop">
-							<span class="glyphicon glyphicon-stop"></span>
-						</p>
-						</ui>
-					</ul></li>
+		<div id="blockSection" class="total-container">
+			<div class="total-container">
+				<div id="contain-layer-left" style="width: 50%; float: left;">
+				</div>
+				<div id="contain-layer-right" style="width: 50%; float: right;">
+				</div>
 			</div>
-			<div class="people">
-				<li><a href=#><img src="images/3.png" /></a>
-					<h2>이게더길어</h2> <span class="info"><nm>이산돌</nm> <em></em>
-						<hr>
-						<div class="comments"></div> </span>
-					<ul class="toolbar">
-						<ui>
-						<p class="likes">
-							<span class="glyphicon glyphicon-heart"></span> <span
-								class="nLikes"></span>
-						</p>
-						</ui>
-
-						<ui>
-						<p class="download">
-							<span class="glyphicon glyphicon-download-alt"></span> <span
-								class="nDown"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="player">
-							<span class="glyphicon glyphicon-play"></span> <span
-								class="glyphicon glyphicon-pause"></span> <span class="nPlayers"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="stop">
-							<span class="glyphicon glyphicon-stop"></span>
-						</p>
-						</ui>
-					</ul></li>
-			</div>
-			<div class="people">
-				<li><a href=#><img src="images/3.png" /></a>
-					<h2>이게더길어</h2> <span class="info"><nm>이산돌</nm> <em></em>
-						<hr>
-						<div class="comments"></div> </span>
-					<ul class="toolbar">
-						<ui>
-						<p class="likes">
-							<span class="glyphicon glyphicon-heart"></span> <span
-								class="nLikes"></span>
-						</p>
-						</ui>
-
-						<ui>
-						<p class="download">
-							<span class="glyphicon glyphicon-download-alt"></span> <span
-								class="nDown"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="player">
-							<span class="glyphicon glyphicon-play"></span> <span
-								class="glyphicon glyphicon-pause"></span> <span class="nPlayers"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="stop">
-							<span class="glyphicon glyphicon-stop"></span>
-						</p>
-						</ui>
-					</ul></li>
-			</div> -->
-
 		</div>
-		<!-- end of Left 컨테이너 -->
 
-		<!--right컨테이너-->
-		<div id="contain-layer-right" style="width: 50%; float: right;">
-<!-- 	 		<div class="people">
-				<li><a href=#><img src="images/3.png" /></a>
-					<h2>이게더길어</h2> <span class="info"><nm>이산돌</nm> <em></em>
-						<hr>
-						<div class="comments"></div> </span>
-					<ul class="toolbar">
-						<ui>
-						<p class="likes">
-							<span class="glyphicon glyphicon-heart"></span> <span
-								class="nLikes"></span>
-						</p>
-						</ui>
-
-						<ui>
-						<p class="download">
-							<span class="glyphicon glyphicon-download-alt"></span> <span
-								class="nDown"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="player">
-							<span class="glyphicon glyphicon-play"></span> <span
-								class="glyphicon glyphicon-pause"></span> <span class="nPlayers"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="stop">
-							<span class="glyphicon glyphicon-stop"></span>
-						</p>
-						</ui>
-					</ul></li>
-			</div>
-			<div class="people">
-				<li><a href=#><img src="images/3.png" /></a>
-					<h2>이게더길어</h2> <span class="info"><nm>이산돌</nm> <em></em>
-						<hr>
-						<div class="comments"></div> </span>
-					<ul class="toolbar">
-						<ui>
-						<p class="likes">
-							<span class="glyphicon glyphicon-heart"></span> <span
-								class="nLikes"></span>
-						</p>
-						</ui>
-
-						<ui>
-						<p class="download">
-							<span class="glyphicon glyphicon-download-alt"></span> <span
-								class="nDown"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="player">
-							<span class="glyphicon glyphicon-play"></span> <span
-								class="glyphicon glyphicon-pause"></span> <span class="nPlayers"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="stop">
-							<span class="glyphicon glyphicon-stop"></span>
-						</p>
-						</ui>
-					</ul></li>
-			</div>
-			<div class="people">
-				<li><a href=#><img src="images/3.png" /></a>
-					<h2>이게더길어</h2> <span class="info"><nm>이산돌</nm> <em></em>
-						<hr>
-						<div class="comments"></div> </span>
-					<ul class="toolbar">
-						<ui>
-						<p class="likes">
-							<span class="glyphicon glyphicon-heart"></span> <span
-								class="nLikes"></span>
-						</p>
-						</ui>
-
-						<ui>
-						<p class="download">
-							<span class="glyphicon glyphicon-download-alt"></span> <span
-								class="nDown"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="player">
-							<span class="glyphicon glyphicon-play"></span> <span
-								class="glyphicon glyphicon-pause"></span> <span class="nPlayers"></span>
-						</p>
-						</ui>
-						<ui>
-						<p class="stop">
-							<span class="glyphicon glyphicon-stop"></span>
-						</p>
-						</ui>
-					</ul></li>
-			</div> 
- -->
-
-		<!-- end of Right컨테이너 -->
-	</div>
+		<div id="musicSection" class="total-container">
+			<div id="music-left" style="width: 50%; float: left;"></div>
+			<div id="music-right" style="width: 50%; float: right;"></div>
+		</div>
 	</div>
 
 	 <!-- User Defined -->
