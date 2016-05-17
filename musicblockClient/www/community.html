@@ -177,9 +177,9 @@ $(function(){
 
 		<div id="blockSection" class="total-container">
 			<div class="total-container">
-				<div id="contain-layer-left" style="width: 50%; float: left;">
+				<div id="block-left" style="width: 50%; float: left;">
 				</div>
-				<div id="contain-layer-right" style="width: 50%; float: right;">
+				<div id="block-right" style="width: 50%; float: right;">
 				</div>
 			</div>
 		</div>
@@ -263,8 +263,8 @@ $(function(){
 								                                            // console.log("데이터가져왔니:"+$('.people:eq('  + Pindex +  ')').eq(0).data("title"));
 								                                  	   });
 
-																var leftHeight = parseInt($("#contain-layer-left").css("height"));
-																var rightHeight = parseInt($("#contain-layer-right").css("height"));
+																var leftHeight = parseInt($("#block-left").css("height"));
+																var rightHeight = parseInt($("#block-right").css("height"));
 																if (leftHeight <= rightHeight) {
 																	$("#contain-layer-left").append(dynamicEl);
 																} else {
