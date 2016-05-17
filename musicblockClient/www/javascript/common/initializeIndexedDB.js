@@ -1,7 +1,9 @@
 /* indexedDB for emotion */
 //variables for IndexedDB
 // In the following line, you should include the prefixes of implementations you want to test.
-window.shimIndexedDB.__useShim();
+	console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+console.log(window.indexedDB)
+console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 window.indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;;
 // DON'T use "var indexedDB = ..." if you're not in a function.
 // Moreover, you may need references to some window.IDB* objects:
@@ -13,21 +15,23 @@ if (!window.indexedDB) {
 	window.alert("Your browser doesn't support a stable version of IndexedDB. Such and such feature will not be available.")
 }
 
+
+
 var request = window.indexedDB.open("musicBlockDB", 3);
 var db;
 
 //functions related to IndexedDB
 $(function(){
+
 	console.log("들어간다")
 	request.onupgradeneeded = function(event){
-		console.log("들어가는중이다")
-		console.log("onupgradeneeded : DB initialized / created");
-		db = event.target.result;
+		db = event.currentTarget.result;
 		//오브젝트 스토어가 테이블 개념, keyPath가 시퀀스 개념
 		/*var blockObjectStore = */db.createObjectStore("blockTable", {keyPath:"id", autoIncrement: true});
 		/*var musicObjectStore = */db.createObjectStore("musicTable", {keyPath:"id", autoIncrement: true});
-		console.log("들어갔다")
 	}
+
+
 
 	request.onerror = function(event){
 		alert("onerror : " + event.target.error);

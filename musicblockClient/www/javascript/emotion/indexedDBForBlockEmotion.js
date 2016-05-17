@@ -3,15 +3,27 @@ var block = {title:'', sec:0, notes:'', emotion:[], hash:'', ucode:''}
 $(function(){
 	// 쿼리스트링의 담겨있는 블럭의 시간과 멜로디에 정보를 먼저 담아둔다.
 	var queryString=(location.href.substr(location.href.lastIndexOf('=') + 1)).split("?");
+	console.log("===============================")
 	console.log(queryString);
 	block.sec = queryString[0];
 	block.notes = queryString[1];
 	console.log(block.notes);
+	console.log("===============================")
 	
-	// indexedDB의 연결을 확인한다.
+	
+console.log(request.readyState);
+
+    // indexedDB의 연결을 확인한다.
 	request.onsuccess = function(event){
-		db = event.target.result;
+		console.log(request.readyState);
+		console.log(event)
+		alert('test');
+		db = event.currentTarget.result;
+		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		console.log(db)
+		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 	}
+
 	
 	var checkedIcon;
 	// 감정 아이콘 클릭 이벤트
@@ -40,7 +52,6 @@ $(function(){
 	);
 	
 	$('#save').on('mouseup', function(){
-		alert("ghghghg");
 		if(block.emotion.length==0){
 			alert('감정을 선택해주세요')
 			// 감정을 선택하라는 modal 띄우기
@@ -57,6 +68,8 @@ $(function(){
 			}
 			// 현재는 입력된 값 그대로 받지만 차후에 태그별로 분리되어 저장하도록 구현하세요.
 			block.hash = $('#hash').val();
+
+			
 			if($('input[id="check"]').is(":checked")){
 				// 현재 유저는 더미데이터로 저장되지만 차후에 로그인된 정보를 담아주세요.
 				block.ucode='1';
@@ -64,8 +77,45 @@ $(function(){
 				sendServer();
 				// 차후 작업예정
 			}
+
+			console.log("-------------------------------------------------------------------")
+			console.log(block.title);
+			console.log(block.sec);
+			console.log(block.notes);
+			console.log(block.emotion);
+			console.log(block.hash);
+			console.log(block.ucode);
+
+			
+
 			// indexed db에 저장.
-			addBlock(block);
+			// addBlock(block);
+			console.log("--------------------------------")
+			console.log('db')
+			console.log(db)
+			console.log('objectStore')
+			try{
+							var objectStore = db.transaction(["blockTable"], "readwrite").objectStore("blockTable");
+			}catch(e){
+				console.log(e.messgae);
+			}
+			console.log(objectStore)
+			console.log("--------------------------------")
+			
+			console.log("--------------------------------")
+			console.log('request')
+			try{
+				request = objectStore.add({title:block.title, notes:block.notes, sec:block.sec, emotion:block.emotion, hash:block.hash});
+			}catch(exception){
+				console.log(exception.messgae);
+			}
+			console.log(request)
+			console.log("--------------------------------")
+			request.onsuccess = function(event){
+				console.log("IndexedDB에 음악블럭 성공적으로 저장했습니다.");
+				//		getAllBlocks();
+			}
+			console.log("-------------------------------------------------------------------")
 		}
 	});
 	
@@ -114,7 +164,7 @@ function getAllBlocks(){
 	var objectStore = transaction.objectStore("blockTable");
 	var request = objectStore.openCursor();
 	request.onsuccess = function(event){
-		var cursor = event.target.result;
+		var cursor = event.currentTarget.result;
 		if(cursor){
 			console.log(cursor);
 			console.log("title : " + cursor.title);
