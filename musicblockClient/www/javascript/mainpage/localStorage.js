@@ -47,7 +47,7 @@ function displayOneMusic(value){
 	+"</div>";
 	
 	$(".swiper-wrapper").append(item);
-	$(".swiper-slide").last().data("musicInfo", value.notes);
+	$(".swiper-slide").last().data("notes", value.notes);
 }
 
 function displayButton(){
