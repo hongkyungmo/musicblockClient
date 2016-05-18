@@ -4,8 +4,8 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+<!-- <meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"> -->
 
 <title> Hello MusicBlock!</title>
 
@@ -55,10 +55,10 @@ $(function(){
 <body>
 	<script src="javascript/common/commonMenu.js"></script>
 	
-	<div id="background">
+	<div id="background" onbeforeunload="closeIt()">
 
 		<div id="new-music" class="ui orange button">
-			<h4>New Music</h4>
+			<h4>New Musig</h4>
 		</div>
 
 		<div class="swiper-container">
@@ -68,6 +68,7 @@ $(function(){
 
 		</div>
 	</div>
+	<script src="javascript/common/loginModal.js"></script>
 	<script src="javascript/common/indexeddbshim.min.js"></script>
 	<script src="javascript/common/initializeIndexedDB.js"></script>
 	<script src="javascript/mainpage/indexedDBFormainPage.js"></script>
