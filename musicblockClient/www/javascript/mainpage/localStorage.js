@@ -15,17 +15,16 @@ function getAllBlocks(){
 	
 	//음악이 있으면 정상 동작
 	for(var i=0;i<localStorage.length;i++){
-		console.log(localStorage.getItem("blk"+i));
-		if(localStorage.getItem("blk"+i).indexOf("blk") != -1){
-			alert("블럭 : " + localStorage.getItem("blk"+i));
+		console.log(localStorage.getItem("msc"+i));
+		if(localStorage.getItem("msc"+i) != null/* && localStorage.getItem("msc"+i) != undefined*/){
+			//alert("뮤직 : " + localStorage.getItem("msc"+i));
+			displayOneMusic(JSON.parse(localStorage.getItem("msc"+i)));
+			numOfGotMusics++;
 		}
 	}
 	
-	//displayOneMusic(cursor.value);
-	numOfGotMusics++;
 	//swiper 설정(이 설정은 아이템들이 DOM으로 구성되어 화면에 떠 있어야만 정상 적용됨)
 	//즉, 적용하는 시점이 중요하다는 것
-		
 	if(numOfGotMusics==numOfMusics){
 		var swiper = new Swiper('.swiper-container', {
 			slidesPerView : 4,
@@ -43,12 +42,12 @@ function displayOneMusic(value){
 			+"<div class='noteVisualContainer'>"
 				+"<i class='fa fa-music fa-3x' id='playing' style='color:#cc4488;'></i>"
 			+"</div>"
-			+"<div class='music-name'>"+value.musicTitle+"</div>"
+			+"<div class='music-name'>"+value.title+"</div>"
 		+"</div>"
 	+"</div>";
 	
 	$(".swiper-wrapper").append(item);
-	$(".swiper-slide").last().data("musicInfo", value.musicInfo);
+	$(".swiper-slide").last().data("musicInfo", value.notes);
 }
 
 function displayButton(){
