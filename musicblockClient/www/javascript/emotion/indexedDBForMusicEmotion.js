@@ -4,14 +4,17 @@ var i=0;
 var kind=new Array('yellow','red','violet','orange','blue');
 var blockInformation;
 // musicInfo는 sec와 note를 합한 정보
-var music = {musicTitle:'', musicInfo:'', emotion:[], hash:'', user:''}
-
+var music = {title:'', notes:'', emotion:[], hash:'', ucode:''}
+var musicSeq=null;
 
 //emotion check function
 $(function() {
-	request.onsuccess = function(event){
-		console.log("onsuccess : DB loaded successfully");
-		db = event.target.result;
+	
+	// 음악을 로컬저장소에 저장하기 위한 번호 설정
+	musicSeq = localStorage.getItem("musicSeq");
+	if(musicSeq==null){
+		localStorage.setItem("musicSeq",0);
+		musicSeq = localStorage.getItem("musicSeq");
 	}
 	
 	// uri가 해당 페이지로 넘어 올 때, query string에 있는 double quotation이 encoding되므로 decodeURIComponent를 이용해 복호화 해준다.
@@ -21,14 +24,13 @@ $(function() {
 	// Query String의 CSV를 이용하여 블럭의 정보들을 배열로 분해한다.
 	var uri = url.substr(indexOfQuestionMark+1,url.length);
 	blockInformation = uri.split("&");
-	
+
 	// 해당 Query String을 JSON으로 변환하여 music객체에 담아둔다
 	for(var i = 0 ; i < blockInformation.length ; i ++){
 		var tmpJSON = jQuery.parseJSON(blockInformation[i]);
-		music.musicInfo += tmpJSON.sec + '&' + tmpJSON.notes;
-		i != blockInformation.length-1 ? music.musicInfo += '/' : music.musicInfo += '';
+		music.notes += tmpJSON.sec + '&' + tmpJSON.notes;
+		i != blockInformation.length-1 ? music.notes += '/' : music.notes += '';
 	}
-	console.log(music.musicInfo);
 	
 	var checkedIcon;
 	// 감정 아이콘 클릭 이벤트
@@ -64,10 +66,10 @@ $(function() {
 			// 타이틀의 입력이 없다면
 			if($('#title').val().length==0){
 				// 차후에 랜덤타이틀 제작하시오.
-				music.musicTitle = '랜덤타이틀';
+				music.title = '랜덤타이틀';
 			}else{
 				// 사용자가 입력한 타이틀 대입			
-				music.musicTitle = $('#title').val();				
+				music.title = $('#title').val();				
 			}
 			// 현재는 입력된 값 그대로 받지만 차후에 태그별로 분리되어 저장하도록 구현하세요.
 			music.hash = $('#hash').val();
@@ -80,7 +82,7 @@ $(function() {
 				sendServer();
 			}
 			// indexed db에 저장.
-//			addMusic(music);
+			addMusic(music);
 		}
 	});
 
@@ -100,22 +102,18 @@ $.fn.clickToggle = function(func1, func2) {
 };
 
 function addMusic(music){
-	var transaction = db.transaction(["musicTable"], "readwrite");
-	var objectStore = transaction.objectStore("musicTable");
-	
-	if(music.musicInfo.length==0){
+	if(music.notes.length==0){
 		// 잘못된 접근이라고 modal로 표시하세요 
 		console.log('잘못된 접근입니다.'); 
 	}else{
-		request = objectStore.add({musicInfo:music.musicInfo, 
-								   musicTitle:music.musicTitle, 
-								   musicEmotion:music.emotion, 
-								   musicHash : music.hash
-								   });
+		var musicKey = 'msc'+musicSeq;
+		localStorage.setItem(musicKey,JSON.stringify(music));
+		musicSeq++;
+		localStorage.setItem("musicSeq",musicSeq);
+		alert("저장완료ㅋ")
+		
 	}
-	request.onsuccess = function(event){
-		console.log("IndexedDB에 음악블럭 성공적으로 저장했습니다.");
-	}
+	
 	var numOfMusics = localStorage.getItem("numOfMusics");
 	numOfMusics++;
 	localStorage.setItem("numOfMusics", numOfMusics);
