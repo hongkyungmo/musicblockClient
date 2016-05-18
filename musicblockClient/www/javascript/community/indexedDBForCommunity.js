@@ -18,7 +18,7 @@ var repo = $(".people");
 //$(function(){
 	// indexedDB의 연결을 확인한다.
 	request.onsuccess = function(event){
-		alert("test1");
+		//alert("test1");
 		console.log("onsuccess : DB loaded successfully");
 		db = event.target.result;
 		sequenceFlag = true;
@@ -38,7 +38,7 @@ var repo = $(".people");
 };*/
 
 function addBlock(bcode,title,note,time){
-	alert("addblock()");
+//	alert("addblock()");
 	// indexedDB의 연결을 확인한다.
 	console.log("blockData: "+bcode+","+title+","+note+","+time);
 	var transaction = db.transaction(["blockTable"], "readwrite");

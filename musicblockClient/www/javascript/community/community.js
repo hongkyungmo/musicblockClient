@@ -77,7 +77,7 @@ $(function() {
 								for (test1 = 0; test1 < max1; test1++) {
 										$.ajax({
 												type : 'GET',
-												url : 'http://localhost:8080/' + 'block/getJsonBlock/'
+												url : 'http://192.168.0.94:8080/' + 'block/getJsonBlock/'
 													+test1,
 												dataType : "json",
 												data : "",
@@ -88,8 +88,6 @@ $(function() {
 													
 													//데이터 블럭값이있을경우에만
 													if (data['block'] != null) {
-														  //$('.people').data("title", data['block'].title);
-														$('.people').eq('+test1+').data("title", data['block'].title);
 														
 														var dynamicEl = "<div class='people'><li><a href=#><img src='images/3.png' /></a><h2>"
 																+ data['block'].title
@@ -97,10 +95,8 @@ $(function() {
 																+ data['block'].regDate
 																+ "</em><hr><div class='comments'>#주말이다 #신난다 #일주일남앗네 #슬프다#코멘트divcss가 뭔가 이상하다!!!</div></span><ul class='toolbar'><ui><p class='likes'><span class='glyphicon glyphicon-heart'></span><span class='nLikes'></span></p></ui><ui><p class='download'><span class='glyphicon glyphicon-download-alt'></span><span class='nDown'></span></p></ui><ui><p class='player'><span class='glyphicon glyphicon-play'></span><span class='glyphicon glyphicon-pause'></span><span class='nPlayers'></span></p></ui><ui><p class='stop'><span class='glyphicon glyphicon-stop'></span></p></ui></ul></li></div>";
 														
-														//console.log($(".people:eq(0)").val("data['block'].title"));
 														var leftHeight = parseInt($("#block-left").css("height"));
 														var rightHeight = parseInt($("#block-right").css("height"));
-														//var block = {title:'', sec:0, notes:'', emotion:[], hash:'', ucode:''}
 
 														if (leftHeight <= rightHeight) {
 															$("#block-left").append(dynamicEl);
@@ -125,12 +121,11 @@ $(function() {
 													}//end of datablock문
 												},//end of success문
 												error : function(status) {
-													alert("status>>"+status);
+													//alert("status>>"+status);
 													console.log(status);
 												}//end of error문
 											})//end of ajax문
 								}//end of for문 test
-										console.log("test번) "+ $('.people').eq(3).data("title"));
 								
 								$(".people").click(function() {
 									var Aindex = $(".people").index(this);
