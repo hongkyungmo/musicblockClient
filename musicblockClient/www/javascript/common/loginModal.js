@@ -31,11 +31,12 @@ $("body").append(element);
 /* modal 띄우기 위한 function */
 $(function(){
 	$("#login").bind("click",function(){
-		alert("login");
-		var con = $(".modal-dialog").css("z-index");
-		alert(con);
+		console.log("login");
+		alert($("#loginModal").css("width"));
+		alert($("#loginModal").css("height"));
 	});
 })
+
 function showModal(){
 	$('#loginModal').on('show.bs.modal', function (event) {
 		console.log('showModal()');

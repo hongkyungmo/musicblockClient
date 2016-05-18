@@ -82,11 +82,39 @@ $("body").append(element);
 
 /* 공통 메뉴바 동작 확인을 위한 log 출력 function */
 
-$(function() {
+function onLoad() {
+	alert("1");
+    document.addEventListener("deviceready", onDeviceReady, false);
 
+}
+
+function onDeviceReady() {
+	alert("2");
+    document.addEventListener("backbutton", onBackKeyDown, false);
+
+}
+
+function onBackKeyDown() {
+	alert("3");
+    navigator.notification.confirm('종료하시겠습니까?', onBackKeyDownMsg, '종료', '취소, 종료');
+
+}
+
+function onBackKeyDownMsg() {
+	alert("4");
+    if(button == 2) {
+
+        navigator.app.exitApp();
+
+    }
+
+}
+
+$(function() {
 	$("#back").bind("click", function() {
 		history.back();
 		console.log("뒤로가기 누름ㅋㅋ");
+		/*navigator.app.exitApp();*/
 	});
 
 });
@@ -211,9 +239,3 @@ $(function() {
 	});
 });
 
-function closeIt(){
-	if(event.clientY<0){
-		event.returnValue="창을 닫겠는가?";
-	}
-}
-window.onbeforeunload.removeUser;
