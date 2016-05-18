@@ -190,7 +190,7 @@ $(function () {
         // need to keep sorted blocks layer
     	var data = $('#block-dialog').data('block');
     	$(blockElment).remove();
-    	deleteBlockById(data.id);
+    	deleteBlockById(data.key);
         $('#block-dialog').modal('hide');
     });
 

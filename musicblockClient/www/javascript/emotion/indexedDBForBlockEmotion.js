@@ -1,4 +1,4 @@
-var block = {title:'', sec:0, notes:'', emotion:[], hash:'', ucode:''}
+var block = {key:'', title:'', sec:0, notes:'', emotion:[], hash:'', ucode:''}
 
 $(function(){
 	// 쿼리스트링의 담겨있는 블럭의 시간과 멜로디에 정보를 먼저 담아둔다.
@@ -103,7 +103,7 @@ function addBlock(block){
 			localStorage.setItem("blockSeq", "0");
 		}
 		var blockSeq = localStorage.getItem("blockSeq");
-		
+		block.key = "blk" + blockSeq;
 		//block 저장
 		localStorage.setItem("blk" + blockSeq, JSON.stringify(block));
 		
