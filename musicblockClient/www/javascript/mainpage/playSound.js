@@ -3,10 +3,6 @@ var currentPlayingIndexForSound = -1.1;//재생 중인 음악이 없을 땐 인�
 var blockTimerClearer;
 var noteTimerClearer;
 
-var playBlock = function(){
-
-}	
-	
 var playMusic = function(currentClickedIndex){
 	var musicInfo = $(".swiper-slide:eq("+currentClickedIndex+")").data("notes");
 	console.log("playMusic func start : " + musicInfo);
@@ -19,7 +15,8 @@ var playMusic = function(currentClickedIndex){
 }
 
 var stopMusic = function(){
-	
+	clearInterval(blockTimerClearer);
+	clearInterval(noteTimerClearer);
 }
 
 //노트코드를 넣으면 음을 정지해 주는 함수
