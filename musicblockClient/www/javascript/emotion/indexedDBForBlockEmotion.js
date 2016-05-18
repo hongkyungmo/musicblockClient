@@ -10,21 +10,6 @@ $(function(){
 	console.log(block.notes);
 	console.log("===============================")
 	
-	
-console.log(request.readyState);
-
-    // indexedDB의 연결을 확인한다.
-	request.onsuccess = function(event){
-		console.log(request.readyState);
-		console.log(event)
-		alert('test');
-		db = event.currentTarget.result;
-		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-		console.log(db)
-		console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-	}
-
-	
 	var checkedIcon;
 	// 감정 아이콘 클릭 이벤트
 	$('.icon').clickToggle(
@@ -51,13 +36,12 @@ console.log(request.readyState);
 			}
 	);
 	
-	$('#save').on('mouseup', function(){
+	$('#save').on('click', function(){
 		if(block.emotion.length==0){
 			alert('감정을 선택해주세요')
 			// 감정을 선택하라는 modal 띄우기
 			return;
 		}else{
-			
 			// 타이틀의 입력이 없다면
 			if($('#title').val().length==0){
 				// 차후에 랜덤타이틀 제작하시오.
@@ -68,7 +52,6 @@ console.log(request.readyState);
 			}
 			// 현재는 입력된 값 그대로 받지만 차후에 태그별로 분리되어 저장하도록 구현하세요.
 			block.hash = $('#hash').val();
-
 			
 			if($('input[id="check"]').is(":checked")){
 				// 현재 유저는 더미데이터로 저장되지만 차후에 로그인된 정보를 담아주세요.
@@ -86,39 +69,10 @@ console.log(request.readyState);
 			console.log(block.hash);
 			console.log(block.ucode);
 
-			
-
-			// indexed db에 저장.
-			// addBlock(block);
-			console.log("--------------------------------")
-			console.log('db')
-			console.log(db)
-			console.log('objectStore')
-			try{
-							var objectStore = db.transaction(["blockTable"], "readwrite").objectStore("blockTable");
-			}catch(e){
-				console.log(e.messgae);
-			}
-			console.log(objectStore)
-			console.log("--------------------------------")
-			
-			console.log("--------------------------------")
-			console.log('request')
-			try{
-				request = objectStore.add({title:block.title, notes:block.notes, sec:block.sec, emotion:block.emotion, hash:block.hash});
-			}catch(exception){
-				console.log(exception.messgae);
-			}
-			console.log(request)
-			console.log("--------------------------------")
-			request.onsuccess = function(event){
-				console.log("IndexedDB에 음악블럭 성공적으로 저장했습니다.");
-				//		getAllBlocks();
-			}
-			console.log("-------------------------------------------------------------------")
+			// localStorage에 저장.
+			addBlock(block);
 		}
 	});
-	
 });
 
 // 클릭토글 함수
@@ -136,25 +90,27 @@ $.fn.clickToggle = function(func1, func2) {
 
 // 블럭 추가 함수
 function addBlock(block){
-	var objectStore = db.transaction(["blockTable"], "readwrite").objectStore("blockTable");
-	console.log(block.notes);
-	console.log(block.notes.length);
-	console.log(block.notes==0);
-	console.log(block.notes<0);
-	console.log(block.notes>0);
-
-
 	// 블럭의 음이 없으면 잘못된 경로에 온 것이므로 오류 처리하도록 한다.
 	if(block.notes.length==0){
 		// 잘못된 접근이라고 modal로 표시하세요 
 		console.log('잘못된 접근입니다.'); 
-	}else if(block.notes.length<0){
+	}else{
 		console.log(block);
-		request = objectStore.add({title:block.title, notes:block.notes, sec:block.sec, emotion:block.emotion, hash:block.hash});
-	}
-	request.onsuccess = function(event){
-		console.log("IndexedDB에 음악블럭 성공적으로 저장했습니다.");
-//		getAllBlocks();
+		//{title:block.title, notes:block.notes, sec:block.sec, emotion:block.emotion, hash:block.hash};
+		
+		//block sequence 증가
+		if(localStorage.getItem("blockSeq") == null){
+			localStorage.setItem("blockSeq", "0");
+		}
+		var blockSeq = localStorage.getItem("blockSeq");
+		
+		//block 저장
+		localStorage.setItem("blk" + blockSeq, JSON.stringify(block));
+		
+		blockSeq++;
+		localStorage.setItem("blockSeq", blockSeq);
+		var testSeq = blockSeq-1;
+		alert("저장된 블럭 : " + localStorage.getItem("blk" + testSeq));
 	}
 }
 
