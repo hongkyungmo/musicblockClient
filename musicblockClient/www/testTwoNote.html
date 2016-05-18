@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+<!-- jQuery -->
+<!--  jQuery JS -->
+<script src="js/jquery/dist/jquery.js"></script>
+<!-- jQuery-ui JS -->
+<script src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
+<!-- jQuery CSS -->
+<link rel="stylesheet" href="js/jquery-ui-1.11.4/jquery-ui.css">
+
+<script>
+	//블록 플레이를 위한 변수
+	var timerIdForPlaying = 0;
+	var countForPlaying = 0; //clickSequence의 복제품
+
+	//음 길이
+	var length = 5;
+
+	//오디오 및 사운드 보조파트 생성
+	var audio1 = new Audio();
+	var audio2 = new Audio();
+	var context = new AudioContext();
+	var analyser1 = context.createAnalyser();
+	var analyser2 = context.createAnalyser();
+	var source1 = context.createMediaElementSource(audio1);
+	var source2 = context.createMediaElementSource(audio2);
+	var gain1 = context.createGain();
+	var gain2 = context.createGain();
+
+	//음 코드(1~48)를 넣으면 음을 연주해주는 함수
+	var playNote = function (noteVal) {
+		if(noteVal==0){
+			return;
+		}
+		//음 연주
+		audio1.src = 'notes/'+noteVal+'.mp3';
+		audio1.controls = true;
+		audio1.autoplay = true;
+		gain1.gain.value = 2;
+		
+		source1.connect(analyser1);
+		analyser1.connect(gain1);
+		gain1.connect(context.destination);
+		console.log(noteVal);
+	}
+	var playNext = function(noteVal){
+		if(noteVal==0){
+			return;
+		}
+		//음 연주
+		audio2.src = 'notes/'+noteVal+'.mp3';
+		audio2.controls = true;
+		audio2.autoplay = true;
+		gain2.gain.value = 2;
+		
+		source2.connect(analyser2);
+		analyser2.connect(gain2);
+		gain2.connect(context.destination);
+		console.log(noteVal);
+	}
+	
+	$(function(){
+		$("#test").bind("click",function(){
+			playNote(20);
+			playNext(30);
+		});
+	});
+</script>
+</head>
+
+<body>
+<div id="test" style="width:100px;height:100px;background-color:red"></div>
+</body>
+</html>
