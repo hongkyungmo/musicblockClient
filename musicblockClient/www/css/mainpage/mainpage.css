@@ -5,7 +5,11 @@ body {
 }
 
 #background {
-    background-color: #E1F6FA;
+    /*background: linear-gradient(to left, #FF512F , #DD2476);*/ 
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /*color: #282828;*/
+    /* background-color: #E1F6FA;*/
+    /* background: linear-gradient( to top, rgba(68, 68, 204, 0.74), rgba(139, 147, 158, 0.45) );*/
 	/*background: linear-gradient( to top, #4499ff, #4444cc );*/
     width: auto;
     height: 88%;
@@ -13,6 +17,7 @@ body {
 
 #new-music {
     display: block;
+    background-color: rgba(143, 157, 183, 0.43);
     position: relative;
     font-size: 18px;
     left: 35%;
@@ -21,6 +26,7 @@ body {
     height: 50px;
     padding-top: 18px;
 }
+
 
 #musics {
     position: relative;
@@ -34,8 +40,10 @@ body {
 	/*background-color:#222222;*/
 	/*background: linear-gradient( to top, #4C6, #492 );*/
 	/*background: linear-gradient( to top, #55dd66, #4499ff );*/
-	background: linear-gradient( to top, #4444cc, #4499ff );
-	/*background: linear-gradient( to top, #ff5573, #c744cc );*/
+	/*background: linear-gradient( to top, #4444cc, #4499ff );*/
+	background: linear-gradient( to top, rgba(68, 68, 204, 0.74), rgba(139, 147, 158, 0.45) );
+    
+    /*background: linear-gradient( to top, #ff5573, #c744cc );*/
 	/*background: linear-gradient( to top, #7733ff, #4499ff );*/
 	/*background: linear-gradient( to top, #114466, #4499ff );*/
 	color: #fff;

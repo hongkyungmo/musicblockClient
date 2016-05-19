@@ -38,6 +38,12 @@
 <link rel="stylesheet" href="css/common/bootstrap-toggle.min.css">
 <script src="javascript/common/bootstrap-toggle.min.js"></script>
 
+<!-- mainStyle  css 설정-->    
+<!--<link rel="stylesheet" href="css/mainpage/normalize.css">-->
+<link rel="stylesheet" href="css/mainpage/style.css">  
+
+
+
 <!--  User definition 설정 -->
 <link rel="stylesheet" href="css/mainpage/mainpage.css">
 <link rel="stylesheet" href="css/common/commonMenu.css">
@@ -57,17 +63,49 @@ $(function(){
 	
 	<div id="background" onbeforeunload="closeIt()">
 
-		<div id="new-music" class="ui orange button">
-			<h4>New Music</h4>
-		</div>
+        <!--윤영 추가부분-->
+           <div class="wrapper">
+               <div class="container">
+                  <h1>Welcome</h1>
 
-		<div class="swiper-container">
-			<div class="swiper-wrapper">
+					<!--    <form class="form">
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="Password">
+                        <button type="submit" id="login-button">Login</button>
+                    </form>-->
+                
 
-			</div>
+                <ul class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
 
-		</div>
-	</div>
+
+                <div id="new-music" class="ui orange button">
+                    <h4>New Music</h4>
+                </div>
+
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+
+                        </div>
+
+                    </div>
+                 </div>   
+       
+            </div>
+    </div>
+    
+    <!--  <script src="javascript/mainpage/vivus.min.js"></script> --><!--윤영추가-->
+    <script src="js/indexTema.js"></script> <!--윤영추가-->
 	<script src="javascript/common/loginModal.js"></script>
 	<!-- <script src="javascript/common/indexeddbshim.min.js"></script>
 	<script src="javascript/common/initializeIndexedDB.js"></script> -->

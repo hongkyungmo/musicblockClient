@@ -70,6 +70,7 @@ var stopAnimationByMusicEnding = function(){
 $(function() {
 	var newMusicBtn = $("#new-music");
 	newMusicBtn.click(function() {
+		console.log("클릭");
 		location.href = "composeMusic.html";
 	});
 });
