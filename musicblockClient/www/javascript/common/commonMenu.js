@@ -48,9 +48,9 @@ element += "</div><div class='col-xs-1 COMMON-MENUBAR-GRID-1'><button type='butt
 
 if(localUser==null){
 	element+=login;
-}/*else{
+}else{
 	element+=logout;
-}*/
+}
 
 element+= 
 
@@ -91,23 +91,18 @@ function onLoad() {
 function onDeviceReady() {
 	alert("2");
     document.addEventListener("backbutton", onBackKeyDown, false);
-
 }
 
 function onBackKeyDown() {
 	alert("3");
     navigator.notification.confirm('종료하시겠습니까?', onBackKeyDownMsg, '종료', '취소, 종료');
-
 }
 
 function onBackKeyDownMsg() {
 	alert("4");
     if(button == 2) {
-
         navigator.app.exitApp();
-
     }
-
 }
 
 $(function() {
@@ -116,7 +111,6 @@ $(function() {
 		console.log("뒤로가기 누름ㅋㅋ");
 		/*navigator.app.exitApp();*/
 	});
-
 });
 
 $(function() {

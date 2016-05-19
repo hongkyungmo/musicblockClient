@@ -156,6 +156,12 @@ $(function() {
 		console.log("logout 누름ㅋㅋ");
 		localStorage.clear('user');
 		localStorage.clear('remember');
+		try{
+		$("#logout").remove();
+		$("#btnContainer").insertAdjacentHTML("afterbegin",login);
+		}catch(e){
+			alert(e);
+		}
 		window.location.reload(true);
 	});
 });

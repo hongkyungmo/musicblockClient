@@ -74,12 +74,10 @@ $(function() {
 			// 현재는 입력된 값 그대로 받지만 차후에 태그별로 분리되어 저장하도록 구현하세요.
 			music.hash = $('#hash').val();
 			
-			if($('#check').checked){
-				// 현재 유저는 더미데이터로 저장되지만 차후에 로그인된 정보를 담아주세요.
-				music.user='1';
-				// 서버에 block을 전달하는 함수를 만드세요.
-				// 차후 작업예정
+			if(localUser!=null){
 				sendServer();
+			}else{
+				alert("로그인이 안되어있네요ㅎ 로그인부터하실래예?");
 			}
 			// indexed db에 저장.
 			addMusic(music);
