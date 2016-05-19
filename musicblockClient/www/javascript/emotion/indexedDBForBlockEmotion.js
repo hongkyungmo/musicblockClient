@@ -90,6 +90,30 @@ $.fn.clickToggle = function(func1, func2) {
     return this;
 };
 
+//현재 페이지 방문 목적판별
+//true : 블럭 수정
+//false : 새 블럭
+var isNewBlock = function(){
+	var URIparserArr = (location.href).split("?");
+	//블럭 수정
+	if(URIparserArr.length >= 3){
+		return false;
+	}
+	//else : 새 블럭
+	return true;
+}
+
+//초기화 함수
+$(function(){
+	if(isNewBlock() == true){
+		//새 블럭일 때의 로직
+	}else{
+		//타이틀에 자동으로 텍스트 넣기
+		//해시태그에 자동으로 태그 넣기
+		//이모티콘 클릭
+	}
+});
+
 // 블럭 추가 함수
 function addBlock(block){
 	// 블럭의 음이 없으면 잘못된 경로에 온 것이므로 오류 처리하도록 한다.

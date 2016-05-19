@@ -198,6 +198,19 @@ $(function () {
 	$(".col-xs-10:eq(0)").append(btnSave);
 });
 
+//현재 페이지 방문 목적판별
+//true : 블럭 수정
+//false : 새 블럭
+var isCorrect = function(){
+	var URIparserArr = (location.href).split("?");
+	//블럭 수정
+	if(URIparserArr[1] == undefined){
+		return false;
+	}
+	//else : 새 블럭
+	return true;
+}
+
 //next
 $(function () {
 	$("#next").bind("click", function () {
@@ -208,7 +221,16 @@ $(function () {
 			noteStr = noteStr + noteArr[i] + ",";
 		}
 		console.log(noteStr.slice(0, -1));
-		location.href = "emotionBlock.html?var=" + noteStr.slice(0, -1);
+		
+		
+		var uri=null;
+		if(isCorrect() == true){//블럭 수정
+			var URIparserArr = (location.href).split("?");
+			var id = JSON.parse(decodeURIComponent(URIparserArr[1])).key;
+			location.href = "emotionBlock.html?var=" + noteStr.slice(0, -1) + "?" + id;
+		}else{//새 블럭
+			location.href = "emotionBlock.html?var=" + noteStr.slice(0, -1);
+		}
 	});
 	$("#next").bind(keyUp, function () {
 	});
