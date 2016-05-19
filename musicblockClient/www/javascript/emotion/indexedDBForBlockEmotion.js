@@ -110,7 +110,6 @@ function addBlock(block){
 		blockSeq++;
 		localStorage.setItem("blockSeq", blockSeq);
 		var testSeq = blockSeq-1;
-		alert("저장된 블럭 : " + localStorage.getItem("blk" + testSeq));
 	}
 }
 

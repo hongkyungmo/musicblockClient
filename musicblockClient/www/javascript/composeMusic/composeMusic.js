@@ -182,7 +182,10 @@ $(function () {
     // Move to blockMaking.html for edit
     $("#dialog-edit").bind("click", function () {
         // need to keep sorted blocks layer
-        $(location).attr('href', "blockMaking.html");
+    	var data = JSON.stringify($('#block-dialog').data('block'));
+//    	console.log(JSON.stringify(data))
+    	$('#block-dialog').modal('hide');
+        $(location).attr('href', "blockMaking.html?"+data);
     });
 
     // Move to blockMaking.html for edit
