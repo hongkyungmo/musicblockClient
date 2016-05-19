@@ -213,3 +213,60 @@ $(function () {
 	$("#next").bind(keyUp, function () {
 	});
 });
+
+var corrector = function(){
+	//넘어오는 쿼리스트링 샘플
+	// {"title":"랜덤타이틀",
+	// "sec":"2",
+	// "notes":"15,18,16,19,21,21,16,17",
+	// "emotion":["3"],
+	// "hash":"",
+	// "ucode":""}
+	
+	var URIparserArr = (location.href).split("?");
+	var decodedURI = decodeURIComponent(URIparserArr[1]);
+	var decodedBlk = JSON.parse(decodedURI);
+	
+	//초 불러오기
+	sec = decodedBlk.sec;
+	//블럭 재생시간 변경
+	blockAnimateTime = sec * 1000;
+	//버튼에 블럭 재생시간 표시
+	var blockTimeLengthForDisplay=null;
+	blockTimeLengthForDisplay = blockAnimateTime/1000 + "s";
+	$("#block-time-display").text(blockTimeLengthForDisplay);
+	
+	//블럭 불러오기
+	notes = decodedBlk.notes;
+	var noteArr = notes.split(",");
+	//예시 : "34,0,37,36,34,0,39,37,36,0,34,0,32,0,0,29,32,34,34,0,0,0,0,0"
+	for(var i=0;i<noteArr.length;i++){
+		if ($("#display-bar").length == 0) {
+			var barLevel = 94 - (noteArr[i] * 2);
+
+			//음정 표시
+			if (clickSequence == 0) {
+				displayObj = '<div class="syllable" style="width:100%"><div class="syllable-bar" style="top:' + barLevel + '%;"></div></div>';
+			} else {
+				for (var j = 0; j < clickSequence; j++) {
+					//박자 결정
+					var beat = (100 - (clickSequence)) / (clickSequence + 1);
+					$(".syllable:eq(" + j + ")").width(beat + '%');
+				}
+				displayObj = '<div class="divider"></div><div class="syllable" style="width:' + beat + '%"><div class="syllable-bar" style="top:' + barLevel + '%;"></div></div>';
+			}
+			//음 디스플레이에 표시
+			$("#syllable-container").append(displayObj);
+			//음정 조절
+			$(".syllable-bar").last().draggable({
+				containment: "parent"
+				, axis: "y"
+			});
+			clickSequence++;
+		}
+	}
+};
+
+$(function(){
+	corrector();
+});
