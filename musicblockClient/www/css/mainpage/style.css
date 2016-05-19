@@ -67,11 +67,12 @@ body :-ms-input-placeholder {
   font-weight: 200;
 }
 form {
+  margin-top:-5%;
   padding: 20px 0;
   position: relative;
   z-index: 2;
 }
-form input {
+/* form input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
@@ -89,7 +90,7 @@ form input {
   -webkit-transition-duration: 0.25s;
           transition-duration: 0.25s;
   font-weight: 300;
-}
+} */
 form input:hover {
   background-color: rgba(255, 255, 255, 0.4);
 }
