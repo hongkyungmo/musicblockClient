@@ -32,8 +32,6 @@ $("body").append(element);
 $(function(){
 	$("#login").bind("click",function(){
 		console.log("login");
-		alert($("#loginModal").css("width"));
-		alert($("#loginModal").css("height"));
 	});
 })
 
@@ -64,10 +62,82 @@ $(function() {
 		}else{
 			console.log('너너너너널널!');
 		}
-		
-		/*$('#loginModal').modal('hide');
-		 *모달 닫기 		 * */
-
+	
 	});
 });
 
+
+/* 로그인 server 통신 function */
+
+function serverLogin(transUser,transPass,transRemember) {
+
+	console.log('serverLogin() ');
+
+	var dummyUser = 'email1@naver.com';
+	var dummyPass = '1234';
+	var dummyRmember = (document.getElementById("remember_me")).checked;
+
+	$
+	.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
+		url : 'http://localhost:8080/'+'user/userLogin',
+		type : 'POST', //Request하는 방식.
+		data : JSON.stringify({ //JSON.stringify를 해줘야 제대로 된 형태의 JSON이 날아감
+			user : transUser,
+			pass : transPass,
+			remember : transRemember
+		}),
+		dataType : "json", //Response로 오는 방식. Request 타입을 지정하는 것으로 착각하기 쉬우므로 주의.
+		contentType : 'application/json;charset=UTF-8', //POST방식일 때 사용. 인코딩 안해주면 한글 깨져서 전송됨
+		success : function(data, status) {
+			console.log(status);
+			console.log("JSONData1 : " + JSON.stringify(data));
+			if (data['user'] !=null) {
+				console.log(data['user'].nick+'님 환영합니다!');
+				$('#loginModal').modal('hide');
+				$("#login").remove();
+				$("#btnContainer").append(logout);
+				
+				if(transRemember){
+					localStorage.setItem('remember','T');
+				}
+
+				addUser(data['user']);
+			} else {
+				alert('회원 정보가 없습니다. 다시 확인해 주세요.');
+			}
+		},
+		error : function(status) {
+			console.log('error'+status);
+		}
+	});
+};
+
+/*      자동로그인 관련 jQuery      */
+
+function removeUser(){
+	alert("removeUser!!");
+	console.log('removeUser');
+	if(localUser!=null){
+		localStorage.clear('user');
+	}
+	if(localStorage.getItem('remember')!=null){
+		localStorage.clear('remember');
+	}
+}
+
+function addUser(vo){
+	console.log('addUser()');
+	console.log('vo.nick>>'+vo.nick);
+	localStorage.setItem('user',vo);
+	/*window.location.reload(true);*/
+}
+
+/* logout 수정 */
+$(function() {
+	$("#logout").bind("click", function() {
+		console.log("logout 누름ㅋㅋ");
+		localStorage.clear('user');
+		localStorage.clear('remember');
+		window.location.reload(true);
+	});
+});
