@@ -17,7 +17,6 @@ function getAllBlocks() {
             var block = JSON.parse(localStorage[key]);
             var random = Math.floor(Math.random() * 3);
             var color = ['#4A0B1F','#33451A','#33336A'];
-            console.log(color[random]);
 
             // HTML 요소
             var dynamicLoadedBlock = "<li class='no_drop swiper-slide highlight' "+ 

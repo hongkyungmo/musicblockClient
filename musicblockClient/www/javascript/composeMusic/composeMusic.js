@@ -154,7 +154,6 @@ var group = $("ol.simple_with_drop").sortable({
 	    	sortedData += JSONtoString(protoBlock);
 	        k != data[0].length-1 ? sortedData += "&" : sortedData += "";	
 	    }
-	    console.log(sortedData);
     }
 });
 
