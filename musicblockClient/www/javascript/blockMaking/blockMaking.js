@@ -224,6 +224,9 @@ var corrector = function(){
 	// "ucode":""}
 	
 	var URIparserArr = (location.href).split("?");
+	if(URIparserArr[1] == undefined){
+		return;
+	}
 	var decodedURI = decodeURIComponent(URIparserArr[1]);
 	var decodedBlk = JSON.parse(decodedURI);
 	
@@ -238,11 +241,11 @@ var corrector = function(){
 	
 	//블럭 불러오기
 	notes = decodedBlk.notes;
-	var noteArr = notes.split(",");
+	var noteFromComposeMusicArr = notes.split(",");
 	//예시 : "34,0,37,36,34,0,39,37,36,0,34,0,32,0,0,29,32,34,34,0,0,0,0,0"
-	for(var i=0;i<noteArr.length;i++){
+	for(var i=0;i<noteFromComposeMusicArr.length;i++){
 		if ($("#display-bar").length == 0) {
-			var barLevel = 94 - (noteArr[i] * 2);
+			var barLevel = 94 - (noteFromComposeMusicArr[i] * 2);
 
 			//음정 표시
 			if (clickSequence == 0) {
@@ -253,10 +256,19 @@ var corrector = function(){
 					var beat = (100 - (clickSequence)) / (clickSequence + 1);
 					$(".syllable:eq(" + j + ")").width(beat + '%');
 				}
-				displayObj = '<div class="divider"></div><div class="syllable" style="width:' + beat + '%"><div class="syllable-bar" style="top:' + barLevel + '%;"></div></div>';
+				if(noteFromComposeMusicArr[i] == 0){
+					displayObj = '<div class="divider"></div><div class="syllable" style="width:' + beat + '%"></div>';
+				}else{
+					displayObj = '<div class="divider"></div><div class="syllable" style="width:' + beat + '%"><div class="syllable-bar" style="top:' + barLevel + '%;"></div></div>';
+				}
 			}
+			
 			//음 디스플레이에 표시
 			$("#syllable-container").append(displayObj);
+			
+			//음 배열에 저장
+			noteArr[i] = noteFromComposeMusicArr[i];
+			
 			//음정 조절
 			$(".syllable-bar").last().draggable({
 				containment: "parent"
