@@ -30,8 +30,8 @@ $(function() {
 });
 
 $(function(){
-	var leftTab= $("label").eq(1);
-	var rightTab=$("label").eq(2);
+	var leftTab= $("label").eq(0);
+	var rightTab=$("label").eq(1);
 	
 	leftTab.bind("click",function(){
 		console.log("tab1 click");
@@ -39,6 +39,8 @@ $(function(){
 		leftTab.find(".fa").css("font-weight","700");
 		leftTab.find(".fa").css("color","#0CE");
 		rightTab.removeClass("clickLabel");
+		rightTab.find(".fa").css("font-weight","200");
+		rightTab.find(".fa").css("color","black");
 		$("#musicSection").hide();
 		$("#blockSection").show();
 	});
@@ -49,6 +51,8 @@ $(function(){
 		rightTab.find(".fa").css("font-weight","700");
 		rightTab.find(".fa").css("color","#0CE");
 		leftTab.removeClass("clickLabel");
+		leftTab.find(".fa").css("font-weight","200");
+		leftTab.find(".fa").css("color","black");
 		$("#blockSection").hide();
 		$("#musicSection").show();
 	});
@@ -74,10 +78,10 @@ $(function() {
 							var scrollHeight = parseInt($(window).scrollTop()+ $(window).height()); //윈도우는 딱 보이는 화면의 크기
 							var documentHeight = parseInt($(document).height()); //도큐먼트는 보이지 않는 곳도 포함한 크기(도큐먼트가 윈도우보다 더 사이즈가 큼) 
 						//if (scrollHeight >= documentHeight) { 
-								for (test1 = 0; test1 < max1; test1++) {
+								for (test1 = 9; test1 < 11; test1++) {
 										$.ajax({
 												type : 'GET',
-												url : 'http://192.168.0.94:8080/' + 'block/getJsonBlock/'
+												url : 'http://192.168.0.111:8080/' + 'block/getJsonBlock/'
 													+test1,
 												dataType : "json",
 												data : "",
