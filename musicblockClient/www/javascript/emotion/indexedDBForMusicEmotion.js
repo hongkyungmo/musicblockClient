@@ -97,6 +97,7 @@ $.fn.clickToggle = function(func1, func2) {
 };
 
 function addMusic(music){
+	alert();
 	if(music.notes.length==0){
 		// 잘못된 접근이라고 modal로 표시하세요 
 		console.log('잘못된 접근입니다.'); 
@@ -129,8 +130,8 @@ function sendServer(){
 	
 	var transSec=transInfo[0];
 	var transNote=transInfo[1];
-	var transTag= (document.getElementById("tag")).value;
-	var transTitle=(document.getElementById("title")).value;
+	var transTag= $("#hash").value;
+	var transTitle=$("#title").value;
 //	var music = {musicTitle:'', musicInfo:'', emotion:[], hash:'', user:''}
 	console.log(music)
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
