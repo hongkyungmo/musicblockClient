@@ -15,6 +15,7 @@ var timeout;
 var dropFlag;
 var layeredBlocks={width:0, sec:0};
 var blockElment;
+var background;
 
 //'.layer-selector' 보류
 var swiperMelodyLayer = new Swiper('.layer-melody-block', {
@@ -40,6 +41,7 @@ var group = $("ol.simple_with_drop").sortable({
     group: 'no-drop'
     , delay:100
     , onMousedown: function ($item, _super, event) {
+    	background = $($item).css('background');
     	downTime = new Date().getTime();
     	timeout = setTimeout(function() {
     		blockElment=$item;
@@ -101,7 +103,6 @@ var group = $("ol.simple_with_drop").sortable({
     	}
     }
     , onDrop: function ($item, container, _super, event) {
-
     	swiperMelodyLayer.params.allowSwipeToNext = true;
     	swiperMelodyLayer.params.allowSwipeToPrev = true;    	
 
@@ -112,6 +113,7 @@ var group = $("ol.simple_with_drop").sortable({
         	$($item).remove();
         }
         
+        $($item).css('background',background);
         // Index 파악
 	    wrapper = swiperMelodyLayer.wrapper[0].children;
 	    for (i = 0; i < wrapper.length; i++) {
@@ -123,12 +125,13 @@ var group = $("ol.simple_with_drop").sortable({
 	    }
 	    $item.removeClass("no_drop");
 	    
+	    // 블럭의 시간만큼 width를 늘린다.
+	    var width = $item.data("block").sec*3.75;
+    	$item.css("width",width+"%");
+    	
 	    // 드래그가 시작된 블럭의 출발점이 repository인지 layer인지 구분한다. 
 	    // repository일 경우
-	    if (parent[0] == comparedNoDrop) {	    	
-	    	// 블럭의 시간만큼 width를 늘린다.
-	    	var width = $item.data("block").sec*3.75;
-	    	$item.css("width",width+"%");
+	    if (parent[0] == comparedNoDrop) {	  
 	    	
 	    	// layer에 있는 블럭의 길이와 시간을 계산한다.
 	    	layeredBlocks.width += width+1.5;
