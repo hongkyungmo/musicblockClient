@@ -211,10 +211,10 @@ $(function () {
     	$(location).attr('href', "community.html");
     });
 
-    // Move to mainpage.html
+    // Move to index.html
     $("#btn-load").bind("click", function () {
         // need to keep sorted blocks layer
-        $(location).attr('href', "mainpage.html");
+        $(location).attr('href', "index.html");
     });
 
     // Move to emotion.html

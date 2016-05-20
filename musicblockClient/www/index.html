@@ -2,70 +2,118 @@
 <html>
 
 <head>
-	<meta charset="UTF-8">
-	<title>Insert title here</title>
-	<style>
-		html,
-		body {
-			height: 100%;
-			overflow-y: hidden;
-		}
-		
-		.pages {
-			width: 200px;
-			height: 130px;
-			border: solid;
-			text-align: center;
-			margin: 0 auto;
-			position: absolute;
-			background-color:white;
-		}
-	</style>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<!-- <meta name="viewport"
+	content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"> -->
+
+<title> Hello MusicBlock!</title>
+
+<!-- jQuery -->
+<!--  jQuery JS -->
+<script src="js/jquery/dist/jquery.js"></script>
+<!-- jQuery-ui JS -->
+<script src="js/jquery-ui-1.11.4/jquery-ui.js"></script>
+<!-- jQuery CSS -->
+<link rel="stylesheet" href="js/jquery-ui-1.11.4/jquery-ui.css">
+
+<!-- bootstrap -->
+<!-- 부트스트랩 JS -->
+<script src="js/bootstrap/js/bootstrap.js"></script>
+<!-- bootstrap CSS -->
+<link rel="stylesheet" href="js/bootstrap/css/bootstrap.css">
+<!-- bootstrap 테마 -->
+<link rel="stylesheet" href="js/bootstrap/css/bootstrap-theme.css">
+
+<!-- swiper 설정 -->
+<link rel="stylesheet" href="css/common/swiper.min.css">
+<script src="javascript/swiper.min.js"></script>
+
+<!--  semantic 설정 -->
+<link rel="stylesheet" type="text/css"
+	href="css/common/semantic.min.css">
+<script type="text/javascript" src="javascript/common/semantic.min.js"></script>
+
+<!-- toggle 설정 -->
+<link rel="stylesheet" href="css/common/bootstrap-toggle.min.css">
+<script src="javascript/common/bootstrap-toggle.min.js"></script>
+
+<!-- mainStyle  css 설정-->    
+<!--<link rel="stylesheet" href="css/mainpage/normalize.css">-->
+<link rel="stylesheet" href="css/mainpage/style.css">  
+
+
+
+<!--  User definition 설정 -->
+<link rel="stylesheet" href="css/mainpage/mainpage.css">
+<link rel="stylesheet" href="css/common/commonMenu.css">
+<script>
+$(function(){
+	if(localStorage.getItem('remember')==null){
+		console.log("자동로그인안되있다!! 로그인페이지로 이동!");
+	}
+});
+
+</script>
+
 </head>
 
-<body style="background: linear-gradient( to top, #77dd77, #44dd44 );">
-	<div style="position:absolute;margin-top:50px;width:870px;height:300px;left:20px;">
-		<center>
-			<h1>&lt;Music Block - Navigator&gt;</h1></center>
-		<div class="pages" style="left:0px;">
-			<a href="mainpage.html"><img src="../images/index/mainpage.png">
-				<br>메인페이지</a>
-			<br>
-		</div>
-		<div class="pages" style="left:220px;">
-			<a href="composeMusic.html"><img src="../images/index/composeMusic.png">
-				<br>음악작곡(블럭 조립)</a>
-			<br>
-		</div>
-		<div class="pages" style="left:440px;">
-			<a href="blockMaking.html"><img src="../images/index/blockMaking.png">
-				<br>음악블럭 생성</a>
-			<br>
-		</div>
-		<div class="pages" style="left:660px;">
-			<a href="emotionBlock.html"><img src="../images/index/emotion.png">
-				<br>블럭저장</a>
-			<br>
-		</div>
-		<div class="pages" style="left:660px;top:240px;">
-			<a href="emotionMusic.html"><img src="../images/index/emotion.png">
-				<br>곡저장</a>
-			<br>
-		</div>
-		<div class="pages" style="font-size:14px;left:440px;top:240px;">
-			<a href="community.html"><img src="../images/index/community.png">
-				<br>음악블럭 공유 커뮤니티(서버)</a>
-			<br>
-		</div>
-	</div>
+<body>
+	<script src="javascript/common/commonMenu.js"></script>
 	
-	<div style="position:absolute;top:320px;left:55px;"><a href="removeBlock.html"><h1>DB의 블럭보기 및 제거</h1></a></div>
+	<div id="background" onbeforeunload="closeIt()">
+
+        <!--윤영 추가부분-->
+           <div class="wrapper">
+               <div class="container">
+                  <!--<h1>Welcome</h1>-->
+
+					<!--    <form class="form">
+                        <input type="text" placeholder="Username">
+                        <input type="password" placeholder="Password">
+                        <button type="submit" id="login-button">Login</button>
+                    </form>-->
+                
+
+                <ul class="bg-bubbles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
 
 
+                <div id="new-music" class="ui orange button">
+                    <h4>New Music</h4>
+                </div>
 
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
 
+                        </div>
+
+                    </div>
+                 </div>   
+       
+            </div>
+    </div>
+    
+    <!--  <script src="javascript/mainpage/vivus.min.js"></script> --><!--윤영추가-->
+    <script src="js/indexTema.js"></script> <!--윤영추가-->
+	<script src="javascript/common/loginModal.js"></script>
+	<!-- <script src="javascript/common/indexeddbshim.min.js"></script>
+	<script src="javascript/common/initializeIndexedDB.js"></script> -->
+	<script src="javascript/mainpage/localStorage.js"></script>
+	<script src="javascript/mainpage/animation.js"></script>
+	<script src="javascript/mainpage/soundManager.js"></script>
+	<script src="javascript/mainpage/playSound.js"></script>	
+	
 </body>
 
 </html>
-
-

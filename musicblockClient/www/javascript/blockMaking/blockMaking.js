@@ -8,8 +8,8 @@ var blockAnimateTime = 2000;
 var noteArr = new Array();
 
 //PC인지 모바일인지 구분해서 이벤트 따로 주기
-var keyDown;
-var keyUp;
+var keyDown = "touchstart";
+var keyUp = "touchend";
 var filter = "win16|win32|win64|mac";
 if( navigator.platform  ){
     if( filter.indexOf(navigator.platform.toLowerCase())<0 ){
@@ -143,6 +143,7 @@ $(function () {
 //건반 클릭
 $(function () {
     $(".key").bind(keyDown, function () {
+    	$(this).css("background-color", 'circle-gradient(circle, "white", "black")');
 		if ($("#display-bar").length == 0) {
 			var barLevel = 94 - (((octave - 1) * 12 + $(".key").index(this)) * 2);
 
@@ -166,6 +167,10 @@ $(function () {
 			});
 			clickSequence++;
 		}
+    });
+    $(".key").bind(keyUp, function () {
+        //$(this).css("background-color", 'circle-gradient(circle, white, "#33edff")');
+    	$(this).css("background-color", "white");
     });
 });
 

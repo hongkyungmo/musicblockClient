@@ -14,7 +14,7 @@ var logout= "<button type='button' id='logout' class='menuButton btn btn-primary
 var element = 
 	"<div class='row COMMON-MENUBAR-ROW' id='COMMON-MENUBAR'><div class='col-xs-1 COMMON-MENUBAR-GRID-1'>";
 
-if(path != "/mainpage.html"){
+if(path != "/index.html"){
 	element += "<button type='btn' class='btn COMMON-MENUBAR-BTN fa fa-chevron-left fa-2x' id='back'></button>";
 }
 
@@ -129,7 +129,7 @@ $(function() {
 			$(location).attr('href', "community.html");
 			break;
 		case 6:
-			$(location).attr('href', "mainpage.html");
+			$(location).attr('href', "index.html");
 			break;
 		}
 	});
