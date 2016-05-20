@@ -15,10 +15,10 @@ function getAllBlocks() {
         if(key.indexOf('blk') != -1){
             // 제이슨 형태로 변환
             var block = JSON.parse(localStorage[key]);
-            var random = Math.floor(Math.random() * 4);
+            var sec = block.sec
             // blue - rosy - green - red - 
-            var colorTop = ['#0095cc','#cf5d6a','#6b9d28',  '#c9151b'];
-            var colorBottom = ['#00678e','#a53845','#436b0c',  '#a11115'];
+            var colorTop = ['#0095cc','#cf5d6a','#6b9d28',  '#c9151b', '#444'];
+            var colorBottom = ['#00678e','#a53845','#436b0c',  '#a11115', '#000'];
 
             // HTML 요소
             var dynamicLoadedBlock = "<li class='no_drop swiper-slide highlight' "+ 
@@ -32,7 +32,8 @@ function getAllBlocks() {
 
             // 해당 요소에 JSON데이터 부여
             $("#my-blocks > li:last").data("block", block);
-            $("#my-blocks > li:last").css("background", '-webkit-gradient(linear, left top, left bottom, from('+colorTop[random]+'), to('+colorBottom[random]+'))');
+            // sec/2 -1 의 의미는 2초 4초 6초 8초 10초를 0,1,2,3,4로 계산한것
+            $("#my-blocks > li:last").css("background", '-webkit-gradient(linear, left top, left bottom, from('+colorTop[sec/2-1]+'), to('+colorBottom[sec/2-1]+'))');
 
             // 드래그 기능 추가
             var blockFromDB = $('.highlight:last-of-type');
