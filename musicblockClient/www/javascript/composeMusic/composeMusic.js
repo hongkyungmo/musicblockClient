@@ -205,11 +205,7 @@ $(function () {
     // Move to template.html
     $("#btn-community").bind("click", function () {
         // need to keep sorted blocks layer
-    	if(localUser!=null){
-    		$(location).attr('href', "community.html");
-    	}else{
-    		alert("로그인이 안되어있네요ㅎ 로그인부터하실래예?");
-		}
+    	$(location).attr('href', "community.html");
     });
 
     // Move to mainpage.html
