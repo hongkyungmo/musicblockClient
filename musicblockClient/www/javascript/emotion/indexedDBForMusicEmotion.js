@@ -43,7 +43,8 @@ $(function() {
 				$(this).attr('src', checkedIcon);
 				
 				// 감정 배열에 감성저장
-				music.emotion.push($(this).attr('id').substr($(this).attr('id').lastIndexOf('_')+1,$(this).attr('id').length));
+				// icon_n에서 n추출
+				block.emotion.push($(this).attr('id').substr($(this).attr('id').lastIndexOf('_')+1,$(this).attr('id').length));
 			}
 			, function(){
 				// 아이콘 문양 변경
@@ -53,7 +54,7 @@ $(function() {
 				$(this).attr('src', checkedIcon);
 				
 				// 감정 배열에 있는 감성삭제
-				music.emotion.splice(music.emotion.indexOf($(this).attr('id')),1);
+				block.emotion.splice(block.emotion.indexOf($(this).attr('id')),1);
 			}
 	);
 	
