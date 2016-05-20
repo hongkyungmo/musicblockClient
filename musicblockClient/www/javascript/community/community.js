@@ -64,7 +64,7 @@ $(function(){
 
 var jsonArray = new Array();
 var test1 = 0;
-var max1 = 10; 
+var max1 = 200; 
 $(function() {
 	var intervalClearer = setInterval(function(){
 		if(sequenceFlag == true){
@@ -78,7 +78,7 @@ $(function() {
 							var scrollHeight = parseInt($(window).scrollTop()+ $(window).height()); //윈도우는 딱 보이는 화면의 크기
 							var documentHeight = parseInt($(document).height()); //도큐먼트는 보이지 않는 곳도 포함한 크기(도큐먼트가 윈도우보다 더 사이즈가 큼) 
 						//if (scrollHeight >= documentHeight) { 
-								for (test1 = 9; test1 < 11; test1++) {
+								for (test1 = 1; test1 < max1; test1++) {
 										$.ajax({
 												type : 'GET',
 												url : 'http://14.32.66.61:8888/' + 'block/getJsonBlock/'
