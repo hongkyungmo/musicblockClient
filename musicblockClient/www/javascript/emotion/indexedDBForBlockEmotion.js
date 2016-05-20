@@ -38,7 +38,7 @@ $(function(){
 	
 	$('#save').on('click', function(){
 		if(block.emotion.length==0){
-			alert('감정을 선택해주세요')
+			//alert('감정을 선택해주세요') ->수정사항!!
 			// 감정을 선택하라는 modal 띄우기
 			return;
 		}else{
