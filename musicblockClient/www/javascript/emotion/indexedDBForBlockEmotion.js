@@ -55,11 +55,7 @@ $(function(){
 			
 			if($('input[id="check"]').is(":checked")){
 				// 현재 유저는 더미데이터로 저장되지만 차후에 로그인된 정보를 담아주세요.
-				if(localUser!=null){
 					sendServer();
-				}else{
-					alert("로그인이 안되어있네요ㅎ 로그인부터하실래예?");
-				}
 				// 차후 작업예정
 			}
 
