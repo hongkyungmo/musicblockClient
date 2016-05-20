@@ -73,12 +73,8 @@ $(function() {
 			}
 			// 현재는 입력된 값 그대로 받지만 차후에 태그별로 분리되어 저장하도록 구현하세요.
 			music.hash = $('#hash').val();
-			
-			if(localUser!=null){
-				sendServer();
-			}else{
-				alert("로그인이 안되어있네요ㅎ 로그인부터하실래예?");
-			}
+
+			sendServer();
 			// indexed db에 저장.
 			addMusic(music);
 		}
