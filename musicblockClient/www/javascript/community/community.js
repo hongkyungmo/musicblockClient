@@ -81,7 +81,7 @@ $(function() {
 								for (test1 = 9; test1 < 11; test1++) {
 										$.ajax({
 												type : 'GET',
-												url : 'http://192.168.0.111:8080/' + 'block/getJsonBlock/'
+												url : 'http://14.32.66.61:8888/' + 'block/getJsonBlock/'
 													+test1,
 												dataType : "json",
 												data : "",

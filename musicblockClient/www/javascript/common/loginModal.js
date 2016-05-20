@@ -79,7 +79,7 @@ function serverLogin(transUser,transPass,transRemember) {
 
 	$
 	.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
-		url : 'http://192.168.0.111:8080/'+'user/userLogin',
+		url : 'http://14.32.66.61:8888/'+'user/userLogin',
 		type : 'POST', //Request하는 방식.
 		data : JSON.stringify({ //JSON.stringify를 해줘야 제대로 된 형태의 JSON이 날아감
 			user : transUser,

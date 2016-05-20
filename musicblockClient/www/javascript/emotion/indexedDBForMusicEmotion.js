@@ -97,7 +97,6 @@ $.fn.clickToggle = function(func1, func2) {
 };
 
 function addMusic(music){
-	alert();
 	if(music.notes.length==0){
 		// 잘못된 접근이라고 modal로 표시하세요 
 		console.log('잘못된 접근입니다.'); 
@@ -106,8 +105,8 @@ function addMusic(music){
 		localStorage.setItem(musicKey,JSON.stringify(music));
 		musicSeq++;
 		localStorage.setItem("musicSeq",musicSeq);
-		alert("저장완료ㅋ")
 		
+		//$("body").append("<div style='position:fixed;background-color:red;opacity:0.7;width:140px;height:100px;top:120px;left:130px'></div>");
 	}
 	
 	var numOfMusics = localStorage.getItem("numOfMusics");
@@ -135,7 +134,7 @@ function sendServer(){
 //	var music = {musicTitle:'', musicInfo:'', emotion:[], hash:'', user:''}
 	console.log(music)
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
-		url : 'music/musicSave',
+		url : 'http://14.32.66.61:8888/music/musicSave',
 		type : 'POST', //Request하는 방식.
 		data : JSON.stringify({ //JSON.stringify를 해줘야 제대로 된 형태의 JSON이 날아감
 			emotion : music.emotion,

@@ -156,7 +156,7 @@ function getAllBlocks(){
 
 //Save to Server&Local
 function sendServer(){
-	var URL = 'http://192.168.0.58:8080/block/blockSave';
+	var URL = 'http://14.32.66.61:8888/block/blockSave';
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
 		url : URL,
 		type : 'POST', //Request하는 방식.
@@ -175,29 +175,29 @@ function sendServer(){
 			console.log(data);
 			console.log("===============================")
 			console.log(status);
-//			console.log("JSONData : "
-//					+ JSON.stringify(data));
-//			/*$("body").append("<div id='save-popup'><div id='popup-btn1'>1</div><div id='popup-btn2'>2</div><div style='top:40%;position:relative;'><font size='1px' color='red'>"+JSON.stringify(data)+"</font></div></div>");*/
-//			$("body")
-//					.append(
-//							"<div id='save-popup'><center><br>성공적으로 전송되었습니다</center><div id='popup-btn1'><center>블럭 추가</center></div><div id='popup-btn2'><center>작곡 화면<br>(3초 후 자동 이동)</center></div></div>");
-//			$("#popup-btn1").click(function() {
-//				$("#save-popup").remove();
-//				location.href = "blockMaking.html";
-//			});
-//			$("#popup-btn2").click(function() {
-//				$("#save-popup").remove();
-//				location.href = "composeMusic.html";
-//			});
-//			$("#save-popup")
-//					.delay(3000)
-//					.fadeOut(
-//							500,
-//							function() {
-//								$("#save-popup")
-//										.remove();
-//								location.href = "composeMusic.html";
-//							});
+			console.log("JSONData : "
+					+ JSON.stringify(data));
+			/*$("body").append("<div id='save-popup'><div id='popup-btn1'>1</div><div id='popup-btn2'>2</div><div style='top:40%;position:relative;'><font size='1px' color='red'>"+JSON.stringify(data)+"</font></div></div>");*/
+			$("body")
+					.append(
+							"<div id='save-popup'><center><br>성공적으로 전송되었습니다</center><div id='popup-btn1'><center>블럭 추가</center></div><div id='popup-btn2'><center>작곡 화면<br>(3초 후 자동 이동)</center></div></div>");
+			$("#popup-btn1").click(function() {
+				$("#save-popup").remove();
+				location.href = "blockMaking.html";
+			});
+			$("#popup-btn2").click(function() {
+				$("#save-popup").remove();
+				location.href = "composeMusic.html";
+			});
+			$("#save-popup")
+					.delay(3000)
+					.fadeOut(
+							500,
+							function() {
+								$("#save-popup")
+										.remove();
+								location.href = "composeMusic.html";
+							});
 		},
 		error : function(request,status,error){
 	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
