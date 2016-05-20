@@ -16,16 +16,16 @@ body {
 }
 
 #new-music {
-    display: block;
-    background-color: rgba(143, 157, 183, 0.43);
+	display: block;
     position: relative;
-    font-size: 18px;
-    left: 35%;
     top: 10%;
-    width: 30%;
-    height: 50px;
+    width: 60%;
+    height: 80px;
     padding-top: 18px;
-    z-index : 1;
+    left: 19%;
+    background-color: rgba(229, 234, 224, 0.38);
+    border: solid;
+    z-index:1;
 }
 
 
