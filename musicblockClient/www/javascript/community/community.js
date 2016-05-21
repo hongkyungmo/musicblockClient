@@ -61,7 +61,7 @@ $(function(){
 
 
 ////////////////////////////////////////////////////////////////////////////////////
-
+var block = {title:'', sec:0, notes:'', emotion:[], hash:'', ucode:''};
 var jsonArray = new Array();
 var test1 = 0;
 var max1 = 200; 
@@ -141,10 +141,6 @@ $(function() {
 								
 	}//end of recvFun문
 	//좋아요 클릭시 카운트 증가
-	
-
-	
-	
 	function increaseLikes() {
 		var myString = $(this).children('.nLikes').first().html();
 		var myInteger = parseInt(myString);
@@ -161,10 +157,27 @@ $(function() {
 
 $(document).on('click', ".download", function() {
     var Pindex = $(".download").index(this);
-    //alert("누른 다운로드 번호::"+Pindex);
-    addBlock($('.people').eq(Pindex).data("title"),$('.people').eq(Pindex).data("sec"),$('.people').eq(Pindex).data("notes"),
-    		$('.people').eq(Pindex).data("emotion"),$('.people').eq(Pindex).data("hash"),$('.people').eq(Pindex).data("ucode"));
-    //alert("ㅎㅎ:"+$('.people').eq(Pindex).data("title"));
+   
+  //block sequence 증가
+	if(localStorage.getItem("blockSeq") == null){
+		localStorage.setItem("blockSeq", "0");
+	}
+	var blockSeq = localStorage.getItem("blockSeq");
+	block.key = "blk" + blockSeq;
+	
+	block.title = $('.people').eq(Pindex).data("title");
+	block.sec = $('.people').eq(Pindex).data("sec");
+	block.notes = $('.people').eq(Pindex).data("notes");
+	block.emotion = $('.people').eq(Pindex).data("emotion");
+	block.hash = $('.people').eq(Pindex).data("hash");
+	block.ucode = $('.people').eq(Pindex).data("ucode");
+	console.log(block);
+	//block 저장
+	localStorage.setItem("blk" + blockSeq, JSON.stringify(block));
+	
+	blockSeq++;
+	localStorage.setItem("blockSeq", blockSeq);
+	var testSeq = blockSeq-1;
    });
 
 function increaseDownLoad() {
