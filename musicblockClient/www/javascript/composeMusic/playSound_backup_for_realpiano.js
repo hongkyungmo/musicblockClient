@@ -3,28 +3,15 @@
 var timerIdForPlaying = 0;
 var countForPlaying = 0; //clickSequence의 복제품
 
-var noteRunner = 0;
-
 //음 길이
 var length = 5;
 
 //오디오 및 사운드 보조파트 생성
-//var audio = new Audio();
-var audio = [];
-for(var i=0;i<10;i++){
-	audio[i] = new Audio();
-}
-
-if(noteRunner == 0){
-}
-
-
+var audio = new Audio();
 var context = new AudioContext();
-var source = context.createMediaElementSource(audio[0]);
-var source = context.createMediaElementSource(audio[1]);
+var analyser = context.createAnalyser();
+var source = context.createMediaElementSource(audio);
 var gain = context.createGain();
-var gain1 = context.createGain();
-var compressor = context.createDynamicsCompressor();
 
 //노트워커, 블록워커
 var blockWalker = 0;
@@ -35,28 +22,14 @@ var playNote = function (noteVal) {
 	if(noteVal==0){
 		return;
 	}
-	
-	
-	audio[noteRunner].src = 'notes/'+noteVal+'.mp3';
-	audio[noteRunner].controls = true;
-	audio[noteRunner++].autoplay = true;
+	audio.src = 'notes/'+noteVal+'.mp3';
+	audio.controls = true;
+	audio.autoplay = true;
 	gain.gain.value = 2;
 	
-	
-	source.connect(gain);
-	
-	gain.connect(compressor);
-	gain1.connect(compressor);
-	compressor.connect(context.destination);
-	
-	if(noteRunner == 10){
-		for(var i=0;i<10;i++){
-			audio[noteRunner] = null;
-			audio[noteRunner] = new Audio();
-		}
-		noteRunner = 0;
-	}
-	
+	source.connect(analyser);
+	analyser.connect(gain);
+	gain.connect(context.destination);
 	console.log(noteVal);
 }
 
@@ -72,6 +45,10 @@ $(function () {
 //블록 플레이를 위한 변수
 var timerIdForPlaying = 0;
 var countForPlaying = 0;
+
+var playAllBlocks = function() {
+	
+}
 
 var playOneBlock = function () {
 	//blockWalker:블럭순회자 //블럭의 갯수만큼 재귀적 반복 시행
