@@ -81,7 +81,7 @@ $(function() {
 								for (test1 = 1; test1 < max1; test1++) {
 										$.ajax({
 												type : 'GET',
-												url : 'http://14.32.66.61:8888/' + 'block/getJsonBlock/'
+												url : serverPath + 'block/getJsonBlock/'
 													+test1,
 												dataType : "json",
 												data : "",

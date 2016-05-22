@@ -134,7 +134,7 @@ function sendServer(){
 //	var music = {musicTitle:'', musicInfo:'', emotion:[], hash:'', user:''}
 	console.log(music)
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
-		url : 'http://14.32.66.61:8888/music/musicSave',
+		url : serverPath + 'music/musicSave',
 		type : 'POST', //Request하는 방식.
 		data : JSON.stringify({ //JSON.stringify를 해줘야 제대로 된 형태의 JSON이 날아감
 			emotion : music.emotion,

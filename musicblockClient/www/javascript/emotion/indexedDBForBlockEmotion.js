@@ -156,7 +156,7 @@ function getAllBlocks(){
 
 //Save to Server&Local
 function sendServer(){
-	var URL = 'http://14.32.66.61:8888/block/blockSave';
+	var URL = serverPath + 'block/blockSave';
 	$.ajax({ //$.post(), $.get(), $.getJSON 등도 있음
 		url : URL,
 		type : 'POST', //Request하는 방식.
