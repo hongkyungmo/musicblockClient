@@ -4,7 +4,7 @@ var i=0;
 var kind=new Array('yellow','red','violet','orange','blue');
 var blockInformation;
 // musicInfo는 sec와 note를 합한 정보
-var music = {title:'', notes:'', emotion:[], hash:'', ucode:''}
+var music = {title:'', notes:'', emotion:[], hash:'', ucode:1}
 var musicSeq=null;
 
 //emotion check function
