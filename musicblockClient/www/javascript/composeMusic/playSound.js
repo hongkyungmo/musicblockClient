@@ -2,7 +2,6 @@
 //블록 플레이를 위한 변수
 var timerIdForPlaying = 0;
 var countForPlaying = 0; //clickSequence의 복제품
-
 var noteRunner = 0;
 
 //음 길이
