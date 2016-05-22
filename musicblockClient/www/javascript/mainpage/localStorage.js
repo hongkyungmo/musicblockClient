@@ -38,9 +38,9 @@ function getAllBlocks(){
 function displayOneMusic(value){
 	console.log(value);
 	var item = "<div class='swiper-slide'>"
-		+"<div class='ui blue button music' style='background-color:transparent'>"
+		+"<div class='ui blue button music' style='background-color:transparent;height:70%;'>"
 			+"<div class='noteVisualContainer'>"
-				+"<i class='fa fa-music fa-3x' id='playing' style='color:#cc4488;'></i>"
+				+"<i class='fa fa-music fa-2x' id='playing' style='color:#cc4488;'></i>"
 			+"</div>"
 			+"<div class='music-name'>"+value.title+"</div>"
 		+"</div>"
